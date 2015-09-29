@@ -1,0 +1,42 @@
+@import "./variables.import.less";
+
+#winery-home-view {
+	text-align: center;
+	header {
+		.guidance-text {
+			margin: 5% 0 0 0;
+		}
+	}
+	#logo {
+		margin: 7% 0 7% 0;
+		width: 70%;
+	}
+	.feature-icon {
+		display: inline;
+		margin: 2.5% 2.5%;
+		width: 42%;
+		border-radius: 12%;
+	}
+	#page-selection {
+		position: relative;
+		left: 50%;
+		margin-left: -15px;
+		margin: 3% 0 3% -24px; /* half of all .pages */
+		.page {
+			float: left;
+			clear: none;
+			width: 10px;
+			height: 10px;
+			border-radius: 5px;
+			border: solid 1px @app-red;
+			margin: 0 3px;
+		}
+		.current-page {
+			background-color: @app-red;
+		}
+	}
+	#back {
+		margin-top: 13%;
+		width: 28%;
+	}
+}

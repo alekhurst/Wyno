@@ -1,0 +1,22 @@
+<main id="specials-view">
+	<header>
+		<button class="back-button" ng-click="goBack()"><img src="/images/tasting_back_button.svg" /></button>
+	</header>
+	<div id="specials-container">
+		<div class="a-special" ng-repeat="special in specials">
+			<h1 class="special-title" ng-class="{'single-wine-title':special.associated_wine}">{{ special.title }}</h1>
+			<div class="a-wine" ng-cloak ng-show="special.associated_wine !== undefined" ng-click="openWineDetails( special.associated_wine._id )">
+				<img class="photo" src='/images/icon-60@2x.png'/>
+				<div class="data-container">
+					<h1 class="name"> {{ special.associated_wine.name }}</h1>
+					<h3 class="location-and-cases fade-loc-cases"> {{ special.associated_wine.location }} </h3>
+					<h3 class="location-and-cases">{{ special.associated_wine.cases_produced }} cases produced</h3>
+					<div class="rating" ng-show="special.associated_wine.reviews.avg_rating">
+						<img class="rating-star" src="/images/star-selected.svg" ng-repeat="i in getArrayFromNumber(special.associated_wine.reviews.avg_rating) track by $index"><h3>{{special.associated_wine.reviews.count}}
+						<ng-pluralize count="special.associated_wine.reviews.count" when="{'1': 'review', 'other': 'reviews'}"></ng-pluralize></h3>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</main>

@@ -1,0 +1,75 @@
+<main id="wine-clubs">
+	<header id="header-hack"></header>
+	<header>
+		<div id="navigation">
+			<button id="home" ng-click="goHome()"></button>
+		</div>
+		<h1>Wine Clubs</h1>
+		<div id="user-container" ng-mouseleave="show_user_options = false">
+			<h2 id="user" ng-mouseover="show_user_options = true" >Hi, {{ currentUser.profile.first_name }}</h2>
+			<h2 id="logout-button" ng-show="show_user_options" ng-click="logout()">logout</h2>
+		</div>
+	</header>
+	<div id="content">
+		<div id="operations">
+			<button id="add-wine-club" ng-click="addWineClub()"><img src="/images/plus-icon.svg"></button>
+		</div>
+		<div id="wine-clubs-list">
+			<div class="a-wine-club" ng-repeat="wine_club in wine_clubs">
+				<h1>{{ wine_club.title }}</h1>
+				<h3>{{ wine_club.deal.quantity }} {{ wine_club.deal.denomination }} per {{ wine_club.deal.rate }} | ${{ wine_club.deal.price }}</h3>
+				<p>{{ wine_club.description }}</p>
+				<div class="edit-and-delete">
+					<button class="edit" ng-click="editWineClub( wine_club._id )">edit</button>
+					<button class="delete" ng-click="deleteWineClub( wine_club._id )">delete</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="popup-background" ng-show="editing || adding">
+		<div id="wine-clubs-popup">
+			<button class="save-cancel-buttons" id="save-button" ng-click="saveWineClub()">save</button>
+			<button class="save-cancel-buttons" id="cancel-button" ng-click="closePopup()">cancel</button>
+			<div id="wine-club-title" class="input-container">
+				<h3>title</h3>
+				<input type="text" ng-model="temp_wine_club.title"/>
+			</div>
+			<div id="denomination-per-rate" class="input-container">
+				<h3>package</h3>
+				<select ng-model="temp_wine_club.deal.quantity" >
+					<option value="1">1</option>
+					<option value="2">2</option>
+					<option value="3">3</option>
+					<option value="4">4</option>
+					<option value="5">5</option>
+					<option value="6">6</option>
+					<option value="7">7</option>
+					<option value="8">8</option>
+					<option value="9">9</option>
+					<option value="10">10</option>
+					<option value="11">11</option>
+				</select>
+				<select ng-model="temp_wine_club.deal.denomination">
+					<option value="bottles">bottle(s)</option>
+					<option value="cases">case(s)</option>
+				</select>
+				<p>per</p>
+				<select ng-model="temp_wine_club.deal.rate">
+					<option value="year">year</option>
+					<option value="month">month</option>
+					<option value="3 months">3 months</option>
+					<option value="6 months">6 months</option>
+					<option value="season">season</option>
+				</select>
+			</div>
+			<div id="wine-club-price" class="input-container">
+				<h3>price</h3>
+				<input type="text" ng-model="temp_wine_club.deal.price"/> $ / year
+			</div>
+			<div id="wine-club-description" class="input-container">
+				<h3>description</h3>
+				<textarea ng-model="temp_wine_club.description"></textarea>
+			</div>
+		</div>
+	</div>
+</main>

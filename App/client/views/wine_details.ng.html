@@ -1,0 +1,46 @@
+<main id="wine-details-view">
+	<header>
+		<button class="back-button" id="back" ng-click="goBack()">back</button>
+		<img id="selected-indicator" src="/images/details_selected_wine_check.svg" ng-class="{ 'is-selected' : current_tasting.find( this_wine._id ) }" ng-hide="just_browsing"/>
+		<button class="forward-button" id="select" ng-hide="just_browsing || current_tasting.find( this_wine._id )" ng-click="selectWine()">select</button>
+		<button class="forward-button" id="unselect" ng-hide="just_browsing || !current_tasting.find( this_wine._id )" ng-click="unselectWine()">unselect</button>
+	</header>
+	<!-- hacky way to show tasting menu below dynamically-sized & fixed container-->
+	<h1 id="title">{{ this_wine.name }}</h1>
+	<h2 id="subtitle">${{ this_wine.price.per_glass }} glass | ${{ this_wine.price.per_bottle }} bottle | ${{ this_wine.price.per_case }} case</h2>
+	<img id="photo" ng-src="{{getImageOriginal(this_wine.photo_id)}}" />
+	<div id="modules-container">
+		<div class="module module-50" id="low-down-module">
+			<h6>the low down</h6>
+			<ul>
+				<li>{{ this_wine.description }}</li>
+				<li>{{ this_wine.cases_produced }} cases produced in {{ this_wine.location }}</li>
+			</ul>
+		</div>
+		<div ng-show="this_wine.modules.goes_well_with" class="module module-50" id="goes-well-with-module">
+			<h6>goes well with</h6>
+			<button ng-repeat="item in this_wine.modules.goes_well_with">{{item}}</button>
+		</div>
+		<div ng-show="this_wine.modules.richness !== undefined" class="module module-50" id="richness-module">
+			<h6>flavor</h6>
+			<p>light</p>
+			<input type="range" min="0" max="10" value="3" ng-disabled="true" ng-model="this_wine.modules.richness"/>
+			<p>rich</p>
+		</div>
+		<div class="module module-100" id="vintage-quality-module">
+			<h6>vintage quality</h6>
+			<img src="/images/vintage-chart.svg" />
+		</div>
+		<div class="module module-100" id="reviews-module">
+			<h6>reviews</h6>
+			<div class="a-review" ng-repeat="review in reviews">
+				<div class="stars-and-name">
+					<img class="rating-star" src="/images/star-selected.svg" ng-repeat="i in getArrayFromNumber(review.stars) track by $index">
+					<h4>by {{review.user_name}}</h4>
+				</div>
+				<h4 class="date">{{createReadableDate(review.created_at)}}</h4>
+				<p class="text">{{review.text}}</p>
+			</div>
+		</div>
+	</div>
+</main>

@@ -1,0 +1,39 @@
+<main id="winery-home">
+	<header id="header-hack"></header>
+	<header>
+		<div id="navigation">
+			<button id="home" ng-click="goHome()"></button>
+		</div>
+		<h1>Home</h1>
+		<div id="user-container" ng-mouseleave="show_user_options = false">
+			<h2 id="user" ng-mouseover="show_user_options = true" >Hi, {{ currentUser.profile.first_name }}</h2>
+			<h2 id="logout-button" ng-show="show_user_options" ng-click="logout()">logout</h2>
+		</div>
+	</header>
+	<div id="content">
+		<div class="clear-inline"></div>
+		<div class='menu-option' ng-click="goTo( 'winery_settings' )">
+			<img src="/images/winery-settings-icon.svg">
+			<h2>winery settings</h2>
+		</div>
+		<div class="horizontal-spacer"></div>
+		<div class='menu-option' ng-click="goTo( 'tasting_menu' )">
+			<img src="/images/begin_tasting_icon.svg">
+			<h2>tasting menu</h2>
+		</div>
+		<div class="horizontal-spacer"></div>
+		<div class='menu-option' ng-click="goTo( 'wine_list' )">
+			<img src="/images/browse_our_wines_icon.svg">
+			<h2>entire wine list</h2>
+		</div>
+		<div class="horizontal-spacer"></div>
+		<div class='menu-option' ng-click="goTo( 'specials' )">
+			<img src="/images/specials_icon.svg">
+			<h2>specials</h2>
+		</div>
+		<div class='menu-option' ng-click="goTo( 'wine_clubs' )">
+			<img src="/images/wine_club_icon.svg">
+			<h2>wine clubs</h2>
+		</div>
+	</div>
+</main>

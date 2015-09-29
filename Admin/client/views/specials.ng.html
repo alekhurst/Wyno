@@ -1,0 +1,48 @@
+<main id="specials">
+	<header id="header-hack"></header>
+	<header>
+		<div id="navigation">
+			<button id="home" ng-click="goHome()"></button>
+		</div>
+		<h1>Specials</h1>
+		<div id="user-container" ng-mouseleave="show_user_options = false">
+			<h2 id="user" ng-mouseover="show_user_options = true" >Hi, {{ currentUser.profile.first_name }}</h2>
+			<h2 id="logout-button" ng-show="show_user_options" ng-click="logout()">logout</h2>
+		</div>
+	</header>
+	<div id="content">
+		<div id="operations">
+			<button id="add-special" ng-click="addSpecial()"><img src="/images/plus-icon.svg"></button>
+		</div>
+		<div id="specials-list">
+			<div class="a-special" ng-repeat="special in specials">
+				<h1 >{{ special.title }}</h1>
+				<div ng-if="special.wine_id" class="wine">
+					<h3 class="name">{{ special.associated_wine.name }}</h3>
+					<h3 class="location-and-cases">{{ special.associated_wine.location }} | {{ special.associated_wine.cases_produced }}</h3>
+					<h3 class="description">{{ special.associated_wine.description }}</h3>
+				</div>
+				<div class="clear-inline"></div>
+				<div class="edit-and-delete">
+					<button class="edit" ng-click="editSpecial( special._id )">edit</button>
+					<button class="delete" ng-click="deleteSpecial( special._id )">delete</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="popup-background" ng-show="editing || adding">
+		<div id="specials-popup">
+			<button class="save-cancel-buttons" id="save-button" ng-click="saveSpecial()">save</button>
+			<button class="save-cancel-buttons" id="cancel-button" ng-click="closePopup()">cancel</button>
+			<div id="special-title">
+				<h3>special title</h3>
+				<input type="text" ng-model="temp_special.title"/>
+			</div>
+			<div id="individual-wine">
+				<input type="checkbox" ng-model="individual_wine">
+				<p>this special is for an individual wine</p>
+				<select ng-show="individual_wine" ng-model="temp_special.wine_id" ng-options="wine._id as wine.name for wine in wines"></select>
+			</div>
+		</div>
+	</div>
+</main>

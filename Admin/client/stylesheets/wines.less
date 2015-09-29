@@ -1,0 +1,124 @@
+@import "./variables.import.less";
+
+#wines-view {
+	#content {
+		z-index: 90;
+		position: absolute;
+		left: 50%;
+		margin-left: -480px;
+		width: 960px;
+		height: 100%;
+		margin-top: 30px;
+		#operations {
+			#search {
+				width: 220px;
+				height: 30px;
+				font-size: 2em;
+				border: solid 1px @dark-grey-text;
+				background: url(/images/search_icon.svg) no-repeat scroll 1px 1px;
+				padding-left: 35px;
+			}
+			#add-wine {
+				display: block;
+				float: right;
+				color: white;
+				padding: 8px 15px;
+				background-color: @app-red;
+				border-radius: 10px;
+				border: none;
+				cursor: pointer;
+				img {
+					width: 20px;
+				}
+				&:hover {
+					background-color: @app-light-red;
+				}
+				&:focus {
+					outline: none;
+				}
+			}
+		}
+
+		#wines {
+			margin-top: 40px;
+			width: 960px;
+
+			.a-wine {
+				position: relative;
+				float: left;
+				width: 258px;
+				height: 210px;
+				padding: 30px;
+				border-radius: 20px;
+				border: solid 1px transparent;
+
+				img {
+					display: block;
+				    float: left;
+				    width: 75px;
+				    height: 75px;
+				    margin-right: 5px;
+				}
+				.primary-info {
+					display: block;
+					width: 178px;
+					float: left;
+					h1 {
+						color: @dark-grey-text;
+						font-weight: 400;
+						margin: 0;
+						font-size: 1.4em;
+					} h2 {
+						color: @dark-grey-text;
+						font-weight: 300;
+						margin: 0;
+						font-size: 1.2em;
+					}
+				}
+				p {
+					display: block;
+					float: left;
+					clear: both;
+					margin: 15px 0;
+					font-weight: 300;
+					font-size: 1.2em;
+					color: @dark-grey-text;
+				}
+				.edit-and-delete {
+					position: absolute;
+					bottom: 0;
+					display: none;
+					margin: 20px 45px;
+					button {
+						cursor: pointer;
+						font-size: 1.5em;
+						padding: 10px 20px;
+						border-radius: 20px;
+						border: solid 1px @dark-grey-text;
+						color: @dark-grey-text;
+						background-color: transparent;
+						&:hover {
+							color: white;
+							background-color: @dark-grey-text;
+						}
+						&:focus {
+							outline: none;
+						}
+					}
+					.edit {
+						margin-right: 5px;
+					}
+
+				}
+				&:hover {
+					border: solid 1px @dark-grey-text;
+					.edit-and-delete {
+						display: block;
+					}
+				}
+			}
+
+
+		}
+	}
+}

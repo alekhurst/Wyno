@@ -1,0 +1,115 @@
+@import "./variables.import.less";
+
+#winery-settings {
+	#content {
+		z-index: 90;
+		position: absolute;
+		left: 50%;
+		margin-left: -480px;
+		width: 960px;
+		height: 100%;
+		margin-top: 30px;
+
+		h1 {
+			font-weight: 300;
+			color: @dark-grey-text;
+		}
+		h2 {
+			font-weight: 300;
+			color: @dark-grey-text;
+			margin: 5px 0px;
+		}
+		h3 {
+			padding-left: 6px;
+			font-weight: 300;
+			color: @dark-grey-text;
+			margin: 0px;
+		}
+		input {
+			border: none;
+			background-color: @light-grey-element;
+			border-radius: 20px;
+			padding: 10px 0 10px 15px;
+			font-size: 1.5em;
+			&:focus {
+				outline: none;
+			}
+		}
+		#logo {
+			float: left;
+			max-width: 450px;
+			div {	
+				max-width: 500px;
+				border-radius: 15px;
+				img {
+					width: 100%;
+				}
+			}
+			#choose-file-button {
+				margin-top: 10px;
+			}
+		}
+		#winery-details {
+			width: 300px;
+			float: left;
+			margin: 0 0 0 40px;
+			#winery-name {
+				input {
+					width: 250px;
+				}
+			}
+			#address {
+				margin: 20px 0 0 0;
+				div {
+					float: left;
+					margin-bottom: 8px;
+				}
+				#street {
+					input {
+						width: 250px;
+					}
+				}
+				#city {
+					input {
+						width: 200px;
+					}
+				}
+				#state {
+					clear: left;
+					input {
+						width: 70px;
+					}
+				}
+				#zip {
+					margin-left: 20px;
+					input {
+						width: 100px;
+					}
+				}
+			}
+		}
+		#cancel-or-save {
+			margin: 100px 0 0 0;
+			width: 100%;
+			text-align: center;
+			float: left;
+			clear: both;
+			button {
+				background-color: @app-red;
+				font-size: 1.5em;
+				font-weight: 300;
+				color: white;
+				padding: 10px 20px;
+				border-radius: 15px;
+				border: none;
+				cursor: pointer;
+				&:focus {
+					outline: none;
+				}
+				&:hover {
+					background-color: @app-light-red;
+				}
+			}
+		}
+	}
+}

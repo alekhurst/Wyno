@@ -1,0 +1,81 @@
+@import "./variables.import.less";
+
+@media only screen 
+and (min-device-width : 375px) 
+and (max-device-width : 667px) { 
+body { font-size: 12px !important; } }
+
+@media only screen 
+and (min-device-width : 414px) 
+and (max-device-width : 736px) { 
+body { font-size: 13px !important; } }
+
+body {
+	position: absolute;
+	font-family: Helvetica, 'Open Sans', sans-serif;
+	font-weight: 300;
+	font-size: 11px;
+	margin: 0px;
+	padding: 0px;
+	height: 100%;
+	width: 100%;
+}
+
+#clear-inline {
+	display: block;
+	clear: both;
+}
+
+header {
+	width: 100%;
+	z-index: 100;
+	position: fixed;
+	padding: 16px 0 0 0;
+	top: 0;
+	background-color: @header-background;
+	overflow: auto;
+	text-align: center;
+	height: 7.9%;
+	button {
+		display: block;
+		position: relative;
+		top: .1em;
+		width: 25%;
+		margin: 3%;
+		padding: 0;
+		background-color: transparent;
+		border: none;
+		color: transparent;
+		&:focus {
+			outline: none;
+		}
+		img {
+			width: 100%;
+		}
+	}
+	.forward-button {
+		float: right;
+	}
+	.back-button {
+		float: left;
+	}
+	.guidance-text {
+		color: white;
+		display: block;
+		float: left;
+		clear: none;
+		width: 38%;
+		margin-bottom: 0;
+	}
+	.guidance-vertically-centered {
+		margin: 5% 0 0 0
+	}
+} 
+
+hr {
+ 	border: 0;
+    height: 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+}
+

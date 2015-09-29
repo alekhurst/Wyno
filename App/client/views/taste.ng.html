@@ -1,0 +1,116 @@
+<main id="taste-view">
+	<!-- choosing view : initially shown -->
+	<div id="choosing" ng-show="state === 'choosing'">
+		<header>
+			<button class="back-button" ng-click="goBack()"><img src="/images/tasting_back_button.svg" /></button>
+			<p class="guidance-text guidance-vertically-centered">{{ guidance_text }}</p>
+			<button class="forward-button" ng-click="changeState( 'ready' )"> <img src="/images/tasting_ready_button.svg"/> </button>
+		</header>
+		<div class="header-gap"></div>
+		<div id="tasting-menu-container" class="wine-menu-container">
+			<div class="a-wine" ng-repeat="wine in wines">
+				<button class="wine-spectator-rating" ng-show="wine.wine_spectator">{{ wine.wine_spectator }}</button>
+				<img class="photo" ng-src="{{getImageThumbnail(wine.photo_id)}}" ng-click="toggleSelected( wine._id )"/>
+				<img class="selected-indicator"  
+				     src="/images/selected_wine_check.png" ng-click="toggleSelected( wine._id )" ng-show="checkIfSelected( wine._id )"/>
+				<div class="data-container" ng-click="openWineDetails( wine._id )">
+					<h1 class="name"> {{ wine.name }}</h1>
+					<h3 class="location-and-cases fade-loc-cases"> {{ wine.location }} </h3>
+					<h3 class="location-and-cases">{{ wine.cases_produced }} cases produced</h3>
+					<div class="rating" ng-show="wine.reviews.avg_rating">
+						<img class="rating-star" src="/images/star-selected.svg" ng-repeat="i in getArrayFromNumber(wine.reviews.avg_rating) track by $index"><h3>{{wine.reviews.count}}
+						<ng-pluralize count="wine.reviews.count" when="{'1': 'review', 'other': 'reviews'}"></ng-pluralize></h3>
+					</div>
+				</div>
+				<img class="open-details-button" src="/images/open_wine_details.svg" ng-click="openWineDetails( wine._id )"/>
+				<div id='clear-inline'></div>
+				<hr />
+			</div>
+		</div>
+	</div>
+	<div id="ready" ng-show="state === 'ready'" ng-cloak>
+		<header>
+			<button class="back-button" id="ready-back-button" ng-click="changeState( 'choosing' )"><img src="/images/tasting_back_button.svg" /></button>
+			<p class="guidance-text guidance-vertically-centered" ng-show="tasting_session.selected_wines.length">wine {{ tasting_session.current_phase + 1 }} of {{ tasting_session.selected_wines.length }}</p>
+		</header>	
+		<h1 id="warning" ng-hide="tasting_session.selected_wines.length">Silly goose, you didn't select any wines to taste!</h1>
+		<div id="current-wine" ng-show="tasting_session.selected_wines.length">
+			<h2 id="phase-instructions" ng-show="tasting_session.selected_wines.length"> {{ phase_prefix }} </h2>
+			<div class="a-wine" >
+			<!-- tasting_session.getWineData( tasting_session.selected_wines[ tasting_session.current_phase ] ) -->
+				
+				<button class="wine-spectator-rating" ng-show="tasting_session.current_wine.wine_spectator">{{ tasting_session.current_wine.wine_spectator}}</button>
+				<img class="photo" src='/images/icon-60@2x.png' />
+				<div class="data-container" ng-click="openWineDetails( tasting_session.current_wine._id )">
+					<h1 class="name"> {{ tasting_session.current_wine.name }}</h1>
+					<h3 class="location-and-cases fade-loc-cases"> {{ tasting_session.current_wine.location }} </h3>
+					<h3 class="location-and-cases">{{ tasting_session.current_wine.cases_produced }} cases produced</h3>
+					<div class="rating" ng-show="tasting_session.current_wine.reviews.avg_rating">
+						<img class="rating-star" src="/images/star-selected.svg" ng-repeat="i in getArrayFromNumber(tasting_session.current_wine.reviews.avg_rating) track by $index"><h3>{{tasting_session.current_wine.reviews.count}}
+						<ng-pluralize count="tasting_session.current_wine.reviews.count" when="{'1': 'review', 'other': 'reviews'}"></ng-pluralize></h3>
+					</div>
+				</div>
+				<img class="open-details-button" src="/images/open_wine_details.svg" ng-click="openWineDetails( wine._id )"/>
+				<div id='clear-inline'></div>
+			</div>
+		</div>
+		<div id="note-or-review" ng-show="tasting_session.selected_wines.length && !note_or_review.showing_save_successful">
+			<div id="current-selection">
+				<div id="note-selection" ng-class="{ 'selected': note_or_review.state === 'note'}" ng-click="showNoteOrReviewInterface('note')">take a note</div>
+				<div id="review-selection" ng-class="{ 'selected': note_or_review.state === 'review'}" ng-click="showNoteOrReviewInterface('review')">leave a review</div>
+			</div>
+			<div id="note" ng-show="note_or_review.state === 'note'">
+				<textarea rows="5" ng-model="temp_note.text"></textarea>
+				<img class="rating-star" src="/images/star-unselected.svg" ng-click="selectRatingStars( 1 )" ng-hide="temp_note.stars_selected >= 1"/>
+				<img class="rating-star" src="/images/star-selected.svg" ng-click="selectRatingStars( 1 )" ng-show="temp_note.stars_selected >= 1"/>
+				<img class="rating-star" src="/images/star-unselected.svg" ng-click="selectRatingStars( 2 )" ng-hide="temp_note.stars_selected >= 2"/>
+				<img class="rating-star" src="/images/star-selected.svg" ng-click="selectRatingStars( 2 )" ng-show="temp_note.stars_selected >= 2"/>
+				<img class="rating-star" src="/images/star-unselected.svg" ng-click="selectRatingStars( 3 )" ng-hide="temp_note.stars_selected >= 3"/>
+				<img class="rating-star" src="/images/star-selected.svg" ng-click="selectRatingStars( 3 )" ng-show="temp_note.stars_selected >= 3"/>
+				<img class="rating-star" src="/images/star-unselected.svg" ng-click="selectRatingStars( 4 )" ng-hide="temp_note.stars_selected >= 4"/>
+				<img class="rating-star" src="/images/star-selected.svg" ng-click="selectRatingStars( 4 )" ng-show="temp_note.stars_selected >= 4"/>
+				<img class="rating-star" src="/images/star-unselected.svg" ng-click="selectRatingStars( 5 )" ng-hide="temp_note.stars_selected >= 5"/>
+				<img class="rating-star" src="/images/star-selected.svg" ng-click="selectRatingStars( 5 )" ng-show="temp_note.stars_selected >= 5"/>
+				<h4 class="save-note-button" ng-click="saveNote()" ng-show="temp_note.state === 'creating'">save note</h4>
+				<h4 class="save-note-button" ng-click="saveNote()" ng-show="temp_note.state === 'editing'">update note</h4>
+				<h4 class="error-saving">{{ temp_note.err }}</h4>
+			</div>
+			<div id="review" ng-show="note_or_review.state === 'review'">
+				<textarea rows="5" ng-model="temp_review.text"></textarea>
+				<img class="rating-star" src="/images/star-unselected.svg" ng-click="selectRatingStars( 1 )" ng-hide="temp_review.stars_selected >= 1"/>
+				<img class="rating-star" src="/images/star-selected.svg" ng-click="selectRatingStars( 1 )" ng-show="temp_review.stars_selected >= 1"/>
+				<img class="rating-star" src="/images/star-unselected.svg" ng-click="selectRatingStars( 2 )" ng-hide="temp_review.stars_selected >= 2"/>
+				<img class="rating-star" src="/images/star-selected.svg" ng-click="selectRatingStars( 2 )" ng-show="temp_review.stars_selected >= 2"/>
+				<img class="rating-star" src="/images/star-unselected.svg" ng-click="selectRatingStars( 3 )" ng-hide="temp_review.stars_selected >= 3"/>
+				<img class="rating-star" src="/images/star-selected.svg" ng-click="selectRatingStars( 3 )" ng-show="temp_review.stars_selected >= 3"/>
+				<img class="rating-star" src="/images/star-unselected.svg" ng-click="selectRatingStars( 4 )" ng-hide="temp_review.stars_selected >= 4"/>
+				<img class="rating-star" src="/images/star-selected.svg" ng-click="selectRatingStars( 4 )" ng-show="temp_review.stars_selected >= 4"/>
+				<img class="rating-star" src="/images/star-unselected.svg" ng-click="selectRatingStars( 5 )" ng-hide="temp_review.stars_selected >= 5"/>
+				<img class="rating-star" src="/images/star-selected.svg" ng-click="selectRatingStars( 5 )" ng-show="temp_review.stars_selected >= 5"/>
+				<h4 class="submit-review-button" ng-click="saveReview()" ng-show="temp_review.state === 'creating'">post review</h4>
+				<h4 class="submit-review-button" ng-click="saveReview()" ng-show="temp_review.state === 'editing'">update review</h4>
+				<h4 class="error-saving">{{ temp_review.err }}</h4>
+			</div>
+		</div>
+		<div id="note-saved-successfully" ng-show="note_or_review.state === 'showing_save_successful'">
+			<h1>Save successful. After you're done tasting we'll show you where to find it.</h1>
+			<button ng-click="note_or_review.state = undefined">ok</button>
+		</div>
+		<div id="not-logged-in" ng-show="note_or_review.state === 'not_logged_in'">
+			<h2>To take notes, leave reviews, and much more, use 1 tap login:</h2>
+			<img id="fb-login-icon" src="/images/fb-login-icon.png" ng-click="loginWithFacebook()"/>
+			<p>(P.S. we don't post to your account or partake in any other shenanigans)</p>
+		</div>
+		<!-- <ul id="your-selections-list" ng-show="tasting_session.selected_wines.length">
+			<h1> Your Selections: </h1>
+			<li ng-repeat="wine in tasting_session.phases track by $index" ng-class="{ 'current-wine' : tasting_session.current_phase === $index }">{{$index + 1}}. {{wine.name}}</li>
+		</ul> -->
+		<div id="phase-buttons" ng-show="tasting_session.selected_wines.length">
+			<button ng-show="tasting_session.current_phase >= 1 && (tasting_session.current_phase !== tasting_session.phases.length-1)" ng-click="changePhase('prev')" class="phase-button">prev round</button>
+			<button ng-show="tasting_session.current_phase < tasting_session.phases.length-1" ng-click="changePhase( 'next' )" class="phase-button">next round!</button>
+			<button ng-show="tasting_session.current_phase === tasting_session.phases.length-1" class="phase-button">all done!</button>
+			<br>
+			<button ng-show="tasting_session.phases.length && (tasting_session.current_phase === tasting_session.phases.length-1) && tasting_session.current_phase !== 0" ng-click="changePhase( 'prev' )" id="done-prev-button">prev round</button>
+		</div>
+	</div>
+</main>

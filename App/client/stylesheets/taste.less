@@ -1,0 +1,164 @@
+@import "./variables.import.less";
+
+#taste-view {
+	height: 100%;
+	.header-gap {
+		width: 100%;
+		height: 1em;
+		background-color: white;
+	}
+	#ready {
+		text-align: center;
+		#warning {
+			margin: 15% 10%;
+			font-weight: 300;
+		}
+
+		#current-wine {
+			overflow: auto;
+			background-color: @light-grey-background;
+			padding: 0 0 2em 0;
+			h2 {
+				margin: 7% 3% 3% 3%;
+				text-align: center;
+				color: @dark-grey-text;
+				font-weight: 300;
+				font-size: 1.7em;
+			}
+			.fade-desc {
+				position: relative;
+  				height: 2.4em; /* exactly two lines */
+  				overflow: hidden;
+			}
+			.fade-desc:after {
+			  	content: "";
+			  	text-align: right;
+			  	position: absolute;
+			  	bottom: 0;
+			  	right: 0;
+			  	width: 40%;
+			  	height: 1.1em;
+			  	background: linear-gradient(to right, rgba(244, 244, 244, 0), rgba(244, 244, 244, 1) 100%);
+			}
+		}
+
+		#phase-buttons {
+			position: absolute;
+			bottom: 3em;
+			width: 70%;
+			margin: 0 15% 0 15%;
+			.phase-button {
+				display: inline;
+				padding: .7em 1.8em;
+				background-color: white;
+				border: solid 1px @dark-grey-text;
+				border-radius: .4em;
+				color: @dark-grey-text;
+				font-size: 1em;
+				&:focus {
+					outline: none;
+				}
+			}
+			#done-prev-button {
+				margin-top: 5px;
+				background-color: white;
+				border: none;
+				color: @light-grey-text;
+				text-decoration: underline;
+				&:focus {
+					outline: none;
+				}
+			}
+		}
+
+		#note-or-review {
+			#current-selection {
+				border-radius: .5em;
+				border: solid 1px @dark-grey-text;
+				overflow: auto;
+				padding: 0;
+				width: 50%;
+				margin: 1.5em 25% 0 25%;
+				div {
+					float: left;
+					width: 49.6%;
+					padding: .6em 0;
+				}
+				#note-selection {
+					border-right: solid 1px @dark-grey-text
+				}
+				.selected {
+					background-color: @dark-grey-text;
+					color: white;
+				}
+			}
+			.rating-star {
+				width: 10%;
+				margin: 1.2em .5em 0 .5em;
+			}
+			h4 {
+				margin: 1.2em 0 0 0;
+				font-size: 1.2em;
+				font-weight: 300;
+			}
+			#save-note-button {
+				float: left;
+			} #submit-review-button {
+				float: right;
+			}
+			textarea {
+				float: left;
+				clear: both;
+				resize: none;
+				border: solid 1px @dark-grey-text;
+				border-radius: 5px;
+				padding: 7px 0 7px 10px;
+				width: 87%;
+				margin: 1em 0 0 5%;
+				font-size: 1.4em;
+				&:focus {
+					outline: none;
+				}
+			}
+			.submit-review-button {
+				width: 100%
+			} 
+			.save-note-button {
+				width: 100%
+			} 
+			.error-saving {
+				color: red;
+			    font-size: 1em;
+			    margin: 0;
+			}
+		}
+
+		#note-saved-successfully {
+			h1 {
+				font-weight: 300;
+				font-size: 1.5em;
+	   			margin: 10% 10% 5% 10%;
+	    		color: @dark-grey-text;
+			}
+			button {
+				background: none;
+			    border: solid 1px @dark-grey-text;
+			    border-radius: .5em;
+			    padding: 1em 2em;
+			}
+		}
+
+		#not-logged-in {
+			h2 {
+				font-weight: 300;
+				margin: 1em 3em .5em 3em;
+			}
+			img {
+				width: 75%
+			}
+			p {
+				margin: .5em 3em;
+			}
+		}
+	}
+}

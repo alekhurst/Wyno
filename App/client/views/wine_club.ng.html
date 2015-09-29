@@ -1,0 +1,20 @@
+<main id="wine-club-view">
+	<header>
+		<button class="back-button" ng-click="goBack()"><img src="/images/tasting_back_button.svg" /></button>
+		<p class="guidance-text">Wine Club</p>
+		<button class="forward-button" style="visibility: hidden"><img src="/images/tasting_back_button.svg" /></button>
+	</header>
+	<div class="header-gap"></div>
+	<div class='a-club' ng-repeat="club in wine_clubs">
+		<h1 class='title'>{{club.title}}</h1>
+		<h2 class='subtitle'>{{ club.deal.quantity }} 
+		<span ng-show="club.deal.denomination === 'bottles'"> 
+			<ng-pluralize count="club.deal.quantity" when="{'1': 'bottle', 'other': 'bottles'}"></ng-pluralize>
+		</span>
+		<span ng-show="club.deal.denomination === 'cases'"> 
+			<ng-pluralize count="club.deal.quantity" when="{'1': 'case', 'other': 'cases'}"></ng-pluralize>
+		</span>
+		 per {{ club.deal.rate }} | ${{club.deal.price}} per shipment</h2>
+		<p class='description'>{{club.description}}</p>
+	</div>
+</main>

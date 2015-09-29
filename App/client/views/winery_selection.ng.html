@@ -1,0 +1,31 @@
+<main id="winery-selection-view">
+	<header>
+		<button id="login-button" ng-click="showUserPanel()"><img src="/images/menu-icon.svg" /></button>
+		<p class="guidance-text">Select a winery</p>
+	</header>
+	<div id="user-panel" ng-class="{'open': user_panel_showing}">
+		<button id="close-user-panel" ng-click="hideUserPanel()">close</button>
+		<div id="panel-content">
+			<div id="not-logged-in" ng-hide="user_logged_in">
+				<h2>With 1 tap login you can:</h2>
+				<ul>
+					<li>Take notes on your favorite wines</li>
+					<li>Leave reviews</li>
+					<li>Track your tastings</li>
+					<li>And more!</li>
+				</ul>
+				<img id="fb-login-icon" src="/images/fb-login-icon.png" ng-click="loginWithFacebook()"/>
+				<p>(P.S. we don't post to your account or partake in any other shenanigans)</p>
+			</div>
+			<div id="user-menu" ng-show="user_logged_in">
+				<button id="logout" ng-click="logout()">logout</button>
+			</div>
+		</div>
+	</div>
+	<div class="a-winery" ng-repeat="winery in wineries">
+		<img ng-src="{{getImageOriginal(winery.logo_id)}}">
+		<div class="clear-inline"></div>
+		<button class="select-winery" ng-click="selectWinery( winery )">{{ winery.name }}</button>
+		<p>{{ winery.address.street }}<br />{{ winery.address.city }}, {{ winery.address.state }} {{ winery.address.zip }}</p>
+	</div>
+</main>

@@ -1,0 +1,90 @@
+@import "./variables.import.less";
+
+.wine-menu-container, #current-wine, .a-special {
+	z-index: 0;
+	height: 100%;
+	.a-wine {
+		text-align: left;
+		position: relative;
+		overflow: auto;
+		.wine-spectator-rating {
+			position: absolute;
+			left: 2%;
+			top: -2%;
+			z-index: 10;
+			font-size: 10px;
+			padding: 10px;
+			border-radius: 15px;
+			opacity: .9;
+			color: @ws-text;
+			background-color: @ws-yellow;
+			border: none;
+		}
+		.photo {
+			display: block;
+			float: left;
+			width: 5.1em;
+			height: 5.1em;
+			border-radius: 10%;
+			margin: 1px 0 3px 3%; /* correct for hr's misaligning */
+			padding: 0;
+		}
+		.selected-indicator {
+			position: absolute;
+			opacity: .9;
+			left: 0;
+			width: 5.1em;
+			height: 5.1em;
+			margin: 0 0 0 3%;
+		} 
+		.data-container {
+			width: 70%; 
+			margin: 0% 0 0 2%;
+			float: left;
+			clear: none;
+			overflow: visible;
+			.name {
+				font-size: 1.3em;
+				line-height: 1.2em;
+				overflow: hidden;
+				font-weight: 400;
+				margin: 0;
+				color: @dark-grey-text;
+			}
+			.location-and-cases {
+				margin: 0 0 0 0;
+				font-size: 1.15em;
+				line-height: 1.1em;
+				font-weight: 300;
+				color: @light-grey-text;
+				overflow: hidden;
+			}
+			.rating {
+				margin: 1px 0 0 0;
+				.rating-star {
+					display: block;
+					float: left;
+					height: 1em;
+					margin: 0 0 0 0;
+				}
+				h3 {
+					float: left;
+					margin: 0 0 .2em .2em;
+					font-size: .9em;
+					font-weight: 300;
+					color: @light-grey-text;
+				}
+			}
+		}
+		hr {
+			margin: 2% 5%;
+		}
+		.open-details-button {
+			position: absolute;
+			right: 0;
+		    top: 25px;
+		    width: 2%;
+		    right: 2.5%;
+		}
+	}
+}

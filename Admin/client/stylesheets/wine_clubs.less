@@ -1,0 +1,220 @@
+@import "./variables.import.less";
+
+#wine-clubs {
+	#content {
+		z-index: 90;
+		position: absolute;
+		left: 50%;
+		margin-left: -480px;
+		width: 960px;
+		height: 100%;
+		margin-top: 30px;
+		#operations {
+			width: 100%;
+			height: 50px;
+			#add-wine-club {
+				display: block;
+				float: right;
+				color: white;
+				padding: 8px 15px;
+				background-color: @app-red;
+				border-radius: 10px;
+				border: none;
+				cursor: pointer;
+				img {
+					width: 20px;
+				}
+				&:hover {
+					background-color: @app-light-red;
+				}
+			}
+		}
+		#wine-clubs-list {
+			.a-wine-club {
+				position: relative;
+				float: left;
+				width: 258px;
+				height: 210px;
+				padding: 30px;
+				border-radius: 20px;
+				border: solid 1px white;
+				text-align: center;
+				h1 {
+					font-weight: 300;
+					color: @dark-grey-text;
+				}
+				h3 {
+					font-weight: 300;
+					color: @dark-grey-text;
+					margin: 0px;
+				}
+				.vertically-centered {
+					position: relative;
+					top: 50%;
+					margin-top: -2em;
+				}
+				.wine {
+					margin-top: 30px;
+					text-align: left;
+					.name {
+						font-size: 1.3em;
+					}
+					.location-and-cases {
+						font-size: 1.1em;
+					}
+					.description {
+						font-size: 1.1em;
+						color: @light-grey-text;
+					}
+				}
+				.edit-and-delete {
+					position: absolute;
+					bottom: 0;
+					display: none;
+					margin: 20px 45px;
+					button {
+						cursor: pointer;
+						font-size: 1.5em;
+						padding: 10px 20px;
+						border-radius: 20px;
+						border: solid 1px @dark-grey-text;
+						color: @dark-grey-text;
+						background-color: white;
+						&:hover {
+							color: white;
+							background-color: @dark-grey-text;
+						}
+						&:focus {
+							outline: none;
+						}
+					}
+					.edit {
+						margin-right: 5px;
+					}
+
+				}
+				&:hover {
+					border: solid 1px @dark-grey-text;
+					.edit-and-delete {
+						display: block;
+					}
+				}
+			}
+		}
+	}
+
+
+	#wine-clubs-popup {
+		background-color: white;
+		width: 320px;
+		height: 320px;
+		border-radius: 20px;
+		position: fixed;
+		left: 50%;
+		top: 30%;
+		margin: 0 0 0 -160px;
+		padding: 20px;
+
+		.save-cancel-buttons {
+			display: block;
+			float: right;
+			font-size: 1em;
+			padding: 8px 25px;
+			border-radius: 5px;
+			cursor: pointer;
+			&:focus {
+				outline: none;
+			}
+		}
+		#save-button {
+			background-color: @app-red;
+			color: white;
+			border: solid 1px @app-red;
+			&:hover {
+				background-color: @app-light-red;
+			}
+		}
+		#cancel-button {
+			background-color: white;
+			color: @app-red;
+			border: solid 1px @app-red;
+			margin-right: 10px;
+		}
+
+
+		.input-container {
+			display: block;
+			float: left;
+			clear: both;
+			h3 {
+				font-size: 1.1em;
+				padding-left: 3px;
+				font-weight: 300;
+				color: @light-grey-text;
+				margin: 0px;
+			}
+			input {
+				border: none;
+				background-color: @light-grey-element;
+				border-radius: 5px;
+				padding: 7px 0 7px 10px;
+				font-size: 1.4em;
+				&:focus {
+					outline: none;
+				}
+			}	
+			textarea {
+				resize: none;
+				border: none;
+				background-color: @light-grey-element;
+				border-radius: 5px;
+				padding: 7px 0 7px 10px;
+				font-size: 1.4em;
+				&:focus {
+					outline: none;
+				}
+			}	
+		}
+		#wine-club-title {
+			position: relative;
+			width: 250px;
+			top: 20px;
+			left: 20px;
+			input {
+				width: 270px;
+			}
+		}
+		#denomination-per-rate {
+			position: relative;
+			width: 250px;
+			top: 30px;
+			left: 20px;
+			h3 {
+				margin-bottom: 1px;
+			}
+			p {
+				display: inline;
+			}
+		}
+		#wine-club-price {
+			position: relative;
+			width: 250px;
+			top: 35px;
+			left: 20px;
+			input {
+				width: 50px;
+			}
+		}
+		#wine-club-description {
+			position: relative;
+			width: 250px;
+			top: 40px;
+			left: 20px;
+			textarea {
+				width: 270px;
+				height: 85px;
+			}
+		}
+		
+	}
+}

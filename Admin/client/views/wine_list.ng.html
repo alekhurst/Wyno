@@ -1,0 +1,126 @@
+<main id="wines-view">
+	<header id="header-hack"></header>
+	<header>
+		<div id="navigation">
+			<button id="home" ng-click="goHome()"></button>
+		</div>
+		<h1>{{ page_title }}</h1>
+		<div id="user-container" ng-mouseleave="show_user_options = false">
+			<h2 id="user" ng-mouseover="show_user_options = true" >Hi, {{ currentUser.profile.first_name }}</h2>
+			<h2 id="logout-button" ng-show="show_user_options" ng-click="logout()">logout</h2>
+		</div>
+	</header>
+	<div id="content">
+		<div id="operations">
+			<input type="text" id="search" />
+			<button id="add-wine" ng-click="showAddWinePopup()"><img src="/images/plus-icon.svg"></button>
+		</div>
+		<div id="wines">
+			<div class="a-wine" ng-repeat="wine in wines">
+				<!-- <img src="/images/icon_120px.svg" /> -->
+				<img src="{{getImageUrl(wine.photo_id)}}" />
+				<div class="primary-info">
+					<h1>{{ wine.name }}</h1>
+					<h2>{{ wine.location }}</h2>
+					<h2>{{ wine.cases_produced }} cases produced</h2>
+					<h2>${{ wine.price.per_glass }} | ${{ wine.price.per_bottle }} | ${{ wine.price.per_case }}</h2>
+				</div>
+				<p>{{ wine.description }}</p>
+				<div class="clear-inline"></div>
+				<div class="edit-and-delete">
+					<button class="edit" ng-click="showEditWinePopup( wine._id )">edit</button>
+					<button class="delete" ng-click="removeWine( wine._id )">delete</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="popup-background" ng-show="adding_wine || editing_wine">
+		<div id="add-or-edit-wine-popup">
+			<button class="save-cancel-buttons" id="save-button" ng-click="saveWine()">save</button>
+			<button class="save-cancel-buttons" id="cancel-button" ng-click="hideWinePopup()">cancel</button>
+			<div id="popup-content">
+				<div id="left-half">
+					<img ng-show="temp_wine.photo_id" id="wine-photo" ng-src="{{getImageUrlOriginal(temp_wine.photo_id)}}" />
+					<div ng-hide="temp_wine.photo_id" class="cropArea">
+				    	<img-crop id="wine-photo" image="winePhotoImage" result-image="winePhotoImageCropped" change-on-fly="true" area-type="square"></img-crop>
+				  	</div>
+					<button id="change-photo" ng-click="triggerImageUpload()">change photo <input type="file" id="winePhotoImageInput" style="display:none;"/></button>
+				</div>
+				<div id="right-half">
+					<div id="wine-title" class="input-container">
+						<h3>wine title</h3>
+						<input type="text" ng-model="temp_wine.name"/>
+					</div>
+					<div id="vintage" class="input-container">
+						<h3>vintage</h3>
+						<input type="text" ng-model="temp_wine.vintage"/>
+					</div>
+					<div id="cases" class="input-container">
+						<h3>cases made</h3>
+						<input type="text" ng-model="temp_wine.cases_produced"/>
+					</div>
+					<div id="price" class="input-container">
+						<h3>price: glass | bottle | case</h3>
+						<input type="text" ng-model="temp_wine.price.per_glass"/>
+						<input type="text" ng-model="temp_wine.price.per_bottle"/>
+						<input type="text" ng-model="temp_wine.price.per_case"/>
+					</div>
+					<div id="location" class="input-container">
+						<h3>location</h3>
+						<input type="text" ng-model="temp_wine.location"/>
+					</div>	
+					<div id="description" class="input-container">
+						<h3>brief description</h3>
+						<textarea ng-model="temp_wine.description"></textarea>
+					</div>	
+					<div id="variety" class="input-container">
+						<h3>variety</h3>
+						<input type="text" ng-model="temp_wine.variety"/>
+					</div>
+					<div id="color" class="input-container">
+						<h3>type</h3>
+						<select ng-model="temp_wine.type">
+							<option value="champagne">Champagne</option>
+							<option value="rose">Rose</option>
+							<option value="desert">Desert</option>
+							<option value="white">White</option>
+							<option value="red">Red</option>
+						</select>
+					</div>
+					<div id="include-in-tasting">
+						<input type="checkbox" ng-checked="temp_wine.in_tasting" ng-model="temp_wine.in_tasting"/><p>Include in tasting menu</p>
+					</div>
+				</div>
+				<div id="modules">
+					<h2>Modules</h2><hr />
+					<div class="a-module" id="low-down-module">
+						<h3>the low down:</h3>
+						<h3 class="directions">(tied to above info)</h3>
+						<ul>
+							<li>{{ temp_wine.description }}</li>
+							<li>{{ temp_wine.cases_produced }} cases produced in {{ temp_wine.location }}</li>
+						</ul>
+					</div>
+					<div class="a-module" id="richness-module">
+						<h3>richness of flavor:</h3>
+						<h3 class="directions">(edit here)</h3>
+						<input type="range" min="0" max="10" value="5" ng-model="temp_wine.modules.richness" />
+					</div>
+					<div class="a-module" id="goes-well-with-module">
+						<h3>goes well with:</h3>
+						<h3 class="directions">(edit here)</h3>
+						<ul>
+							<li ng-repeat="item in temp_wine.modules.goes_well_with track by $index"><button class="remove-item" ng-click="removeItemFromGoesWellWith( $index )">-</button><input type="text" ng-model="temp_wine.modules.goes_well_with[ $index ]" /></li>
+							<button class="add-item" ng-click="addItemToGoesWellWith()">+</button>
+						</ul>
+					</div>
+					<div class="a-module" id="vintage-quality-module">
+						<h3>vintage quality:</h3>
+						<h3 class="directions">(tied to above info)</h3>
+						<img src="/images/vintage-chart.svg" />
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</main>

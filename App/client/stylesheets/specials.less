@@ -1,0 +1,33 @@
+@import "./variables.import.less";
+
+#specials-view {
+	width: 100%;
+	#specials-container {
+		.a-special {
+			position: relative;
+			background-color: white;
+			width: 95%;
+			padding: 4% 2.5%;
+			margin: 2% 0;
+			text-align: center;
+			overflow: auto;
+			.special-title {
+				display: block;
+				color: @dark-grey-text;
+				font-weight: 500;
+				font-size: 1.4em;
+				margin: 2% 0 2% 0;
+			}
+			.single-wine-title {
+				margin-top: 0;
+			}
+			.open-details-button {
+				position: absolute;
+				right: 0;
+			    bottom: 2.7em;
+			    width: 2%;
+			    right: 2.5%;
+			}
+		}
+	}
+}

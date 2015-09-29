@@ -1,0 +1,126 @@
+@import "./variables.import.less";
+
+#winery-selection-view {
+	text-align: center;
+	height: 100%;
+	width: 100%;
+	header {
+		text-align: center;
+		height: 7.9%;
+		#login-button {
+			float: left;
+			border-radius: 25%;
+			margin: 3% 0 0 2%;
+			width: 9%;
+			padding: 1%;
+			img {
+				width: 100%;
+			}
+			border: none;
+		}
+		.guidance-text {
+			width: 76%;
+			display: inline;
+			margin: 5% 0 0 0;
+		}
+	}
+	.a-winery {
+		background-color: white;
+		margin: 2% 0;
+		padding: 5%;
+		text-align: center;
+		img {
+			margin: 3% 0 0 0;
+			width: 75%;
+		} .select-winery {
+			margin: 1em 0 0 0;
+			padding: 1em 1.5em;
+			font-size: 1.2em;
+			background-color: @app-red;
+			color: white;
+			border: none;
+			border-radius: 15px;
+			&:focus {
+				outline: none;
+			}
+		} .clear-inline {
+			display: block;
+		} p {
+			font-size: .9em;
+			margin-top: 5px;
+			color: @light-grey-text;
+		}
+	}
+	#winery-here {
+		text-decoration: underline;
+		margin: 4em 0;
+		color: @light-grey-text;
+	}
+}
+
+#user-panel {
+	text-align: left;
+	background-color: @light-grey-background;
+    position: fixed;
+    top: 0;
+    left: -81%;
+    z-index: 100;
+    width: 80%;
+    height: 100%;
+    box-shadow: 2px 0px 1px 0px rgba(230,230,230,1);
+    -webkit-transition-duration: 0.3s;
+	-moz-transition-duration: 0.3s;
+	-o-transition-duration: 0.3s;
+	transition-duration: 0.3s;
+
+    #close-user-panel {
+        float: right;
+	    background-color: none;
+	    background: none;
+	    border: none;
+	    color: @light-grey-text;
+	    margin: 1em;
+	    font-size: 1em;
+    }
+
+    #panel-content {
+    	float: left;
+    	clear: both;
+    	
+    	#not-logged-in {
+    		width: 90%;
+    		padding-left: 10%;
+    		margin-top: 50%;
+	    	h2 {
+		    	font-weight: 300;
+		    	color: @dark-grey-text;
+		    	margin: .5em 0 0 0;
+		    }
+	    	ul {
+	    		padding-left: 2em;
+	    		margin: .5em 0 1em 0;
+	    		text-align: left;
+	    		color: @dark-grey-text;
+	    		font-weight: 300;
+	    		font-size: 1.1em;
+	    	}
+	    	img {
+	    		width: 90%;
+	    	}
+	    	p {
+	    		margin: .5em 0 0 0;
+	    		color: @dark-grey-text;
+	    	    text-align: center;
+    			width: 90%;
+	    	}
+	    }
+	    #user-menu {
+    		width: 90%;
+    		padding-left: 10%;
+    	}
+    }
+}
+
+#user-panel.open {
+	left: 0;
+}

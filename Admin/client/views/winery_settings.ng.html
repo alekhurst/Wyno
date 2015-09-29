@@ -1,0 +1,53 @@
+<main id="winery-settings">
+	<header id="header-hack"></header>
+	<header>
+		<div id="navigation">
+			<button id="home" ng-click="goHome()"></button>
+		</div>
+		<h1>Truett Hurst</h1>
+		<div id="user-container" ng-mouseleave="show_user_options = false">
+			<h2 id="user" ng-mouseover="show_user_options = true" >Hi, {{ currentUser.profile.first_name }}</h2>
+			<h2 id="logout-button" ng-show="show_user_options" ng-click="logout()">logout</h2>
+		</div>
+	</header>
+	<div id="content">
+		<div id="general-settings">
+			<h1>General</h1>
+			<hr />
+			<div id="logo">
+				<h2>Logo</h2>
+				<div id="upload-container"><img ng-src="{{image.url()}}" /></div>
+				<input id="choose-file-button" type="file" name="file" onchange="angular.element(this).scope().uploadFile(this.files)"/>
+			</div>
+			<div id="winery-details">
+				<div id="winery-name">
+					<h2>Winery Name</h2>
+					<input type="text" ng-model="temp_winery.name"/>
+				</div>
+				<div id="address">
+					<h2>Address</h2>
+					<div id="street">
+						<h3>street # and name</h3>
+						<input type="text" ng-model="temp_winery.address.street" />
+					</div>
+					<div id="city">
+						<h3>city</h3>
+						<input type="text" ng-model="temp_winery.address.city" />
+					</div>
+					<div id="state">
+						<h3>state</h3>
+						<input type="text" ng-model="temp_winery.address.state"/>
+					</div>
+					<div id="zip">
+						<h3>zip code</h3>
+						<input type="text" ng-model="temp_winery.address.zip"/>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="cancel-or-save">
+			<button ng-click="goHome()">cancel</button>
+			<button ng-click="updateWinery()">save</button>
+		</div>
+	</div>
+</main>

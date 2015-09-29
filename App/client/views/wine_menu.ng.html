@@ -1,0 +1,24 @@
+<main id="wine-menu-view">
+	<header>
+		<button class="back-button" ng-click="goBack()"><img src="/images/tasting_back_button.svg" /></button>
+		<input id="search-wine-menu" type="text" ng-model="search"/>
+	</header>
+	<div class="header-gap"></div>
+	<div class="wine-menu-container">
+		<div class="a-wine" ng-repeat="wine in wines | filter: search" ng-click="openWineDetails( wine._id )">
+			<button class="wine-spectator-rating" ng-show="wine.wine_spectator">{{ wine.wine_spectator }}</button>
+			<img class="photo" src='/images/icon-60@2x.png' />
+			<div class="data-container" ng-click="openWineDetails( wine._id )">
+				<h1 class="name"> {{ wine.name }}</h1>
+				<h3 class="location-and-cases fade-loc-cases"> {{ wine.location }} | {{ wine.cases_produced }} cases produced</h3>
+				<div class="rating" ng-show="wine.reviews.avg_rating">
+					<img class="rating-star" src="/images/star-selected.svg" ng-repeat="i in getArrayFromNumber(wine.reviews.avg_rating) track by $index"><h3>{{wine.reviews.count}}
+					<ng-pluralize count="wine.reviews.count" when="{'1': 'review', 'other': 'reviews'}"></ng-pluralize></h3>
+				</div>
+			</div>
+			<img class="open-details-button" src="/images/open_wine_details.svg" ng-click="openWineDetails( wine._id )"/>
+			<div id='clear-inline'></div>
+			<hr />
+		</div>
+	</div>
+</main>

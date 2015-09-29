@@ -1,0 +1,22 @@
+<head>
+  	<meta charset="UTF-8">
+    <base href="/">
+    <title>Wyno</title>
+	<!-- Mobile --> 
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+	<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+	<link rel="apple-touch-icon-precomposed" href="/images/icon_152px.png">
+	<link rel="icon" href="/images/icon_152px.png">
+	<!-- Font -->
+	<link href="//fonts.googleapis.com/css?family=Open+Sans:300" rel="stylesheet" type="text/css">
+</head>
+<body ng-style="{'background-color': body_bg_color}">
+	<!-- hack for a position:fixed header and still start content below -->
+  	<header style="visibility: hidden; position: relative;">
+  		<button class="back-button"><img src="/images/tasting_back_button.svg" /></button>
+		<p class="guidance-text">placeholder</p>
+		<button class="forward-button"> <img src="/images/tasting_ready_button.svg"/> </button>
+	</header>
+	<div ui-view></div>
+</body>
