@@ -4,7 +4,8 @@
 		<p class="guidance-text">Select a winery</p>
 	</header>
 	<div id="user-panel" ng-class="{'open': user_panel_showing}">
-		<button id="close-user-panel" ng-click="hideUserPanel()">close</button>
+		<button id="close-user-panel" class="user-panel-function" ng-click="hideUserPanel()">close</button>
+		<button id="logout" class="user-panel-function" ng-show="user_logged_in" ng-click="logout()">logout</button>
 		<div id="panel-content">
 			<div id="not-logged-in" ng-hide="user_logged_in">
 				<h2>With 1 tap login you can:</h2>
@@ -18,7 +19,8 @@
 				<p>(P.S. we don't post to your account or partake in any other shenanigans)</p>
 			</div>
 			<div id="user-menu" ng-show="user_logged_in">
-				<button id="logout" ng-click="logout()">logout</button>
+				<button>My Notes</button>
+				<button>My Reviews</button>
 			</div>
 		</div>
 	</div>

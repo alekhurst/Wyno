@@ -73,17 +73,21 @@
 	-o-transition-duration: 0.3s;
 	transition-duration: 0.3s;
 
-    #close-user-panel {
-        float: right;
+    .user-panel-function {
 	    background-color: none;
 	    background: none;
 	    border: none;
 	    color: @light-grey-text;
 	    margin: 1em;
 	    font-size: 1em;
+    } #close-user-panel {
+    	float: right;
+    } #logout {
+    	float: left;
     }
 
     #panel-content {
+    	width: 100%;
     	float: left;
     	clear: both;
     	
@@ -115,8 +119,21 @@
 	    	}
 	    }
 	    #user-menu {
-    		width: 90%;
-    		padding-left: 10%;
+    		width: 100%;
+    		button {
+			    background: none;
+			    border: none;
+			    float: left;
+			    clear: both;
+			    width: 90%;
+			    padding: 3%;
+			    margin: .2em 5% 0 5%;
+			    background-color: white;
+			    font-size: 1em;
+			    &:focus {
+			    	outline: none;
+			    }
+    		}
     	}
     }
 }

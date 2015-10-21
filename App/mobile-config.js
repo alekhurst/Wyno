@@ -2,7 +2,7 @@ App.info({
   name: 'Wyno',
   description: 'Your personal wine tasting assistant',
   author: 'Alek Hurst',
-  website: 'http://wyno.io:3000',
+  website: 'http://wyno.io',
   version: '0.0.1'
 });
 
@@ -13,6 +13,8 @@ App.icons({
 });
 
 App.setPreference('Orientation', 'portrait');
+App.setPreference('StatusBarOverlaysWebView', 'true');
+App.setPreference('StatusBarStyle', 'lightcontent');
 
 App.launchScreens({
   'iphone_2x': 'public/images/Default@2x.png',
