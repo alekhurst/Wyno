@@ -115,7 +115,7 @@ function( $scope, $stateParams, $location, $meteor ) {
 	 * @param {string} photoId
 	 */
   	$scope.getImageUrl = function(photoId) {
-    	if (photoId) {
+    	if ( photoId && Images.findOne( photoId ) ) {
       		return Images.findOne(photoId).url({store: 'thumbnail'});
     	}
   	}

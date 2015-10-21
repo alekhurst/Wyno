@@ -5,6 +5,7 @@ Specials = new Mongo.Collection( "specials" );
 Reviews = new Mongo.Collection( "reviews" );
 Notes = new Mongo.Collection( "notes" );
 Users = new Mongo.Collection( "restricted_user_data" );
+
 Images = new FS.Collection("images", {
   stores: [
     new FS.Store.GridFS("original"),

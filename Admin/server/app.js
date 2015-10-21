@@ -28,7 +28,6 @@ Meteor.publish('images', function() {
     return Images.find({});
 });
 
-
 Meteor.methods({
     /**
      * Wines CRUD

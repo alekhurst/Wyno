@@ -4,8 +4,6 @@
 # 'meteor add' and 'meteor remove' will edit this file for you,
 # but you can also edit it by hand.
 
-meteor-platform
-urigo:angular
 angularui:angular-ui-router
 less
 accounts-facebook
@@ -13,3 +11,18 @@ service-configuration
 aldeed:collection2
 cfs:standard-packages
 cfs:gridfs
+standard-minifiers
+meteor-base
+mobile-experience
+mongo
+blaze-html-templates
+session
+jquery
+tracker
+logging
+reload
+random
+ejson
+spacebars
+check
+angular
