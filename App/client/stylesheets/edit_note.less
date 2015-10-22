@@ -1,0 +1,86 @@
+@import "./variables.import.less";
+
+#edit-note-view {
+	header {
+		#cancel-button {
+			width: auto;
+			background-color: @app-red;
+			color: #f49c9c;
+			padding: .8em 1.5em;
+			font-size: .9em;
+			border-radius: .5em;
+		}
+		p {
+			width: 56%;
+		}
+		#save-button {
+			float: right;
+			width: auto;
+			background-color: @app-red;
+			color: #f49c9c;
+			padding: .8em 1.5em;
+			font-size: .9em;
+			border-radius: .5em;
+		}
+	}
+	#wine-info {
+		float: left;
+		margin: .8em .5em;
+		padding: 0;
+		color: @light-grey-text;
+		font-weight: 300;
+		font-size: 1em;
+	}
+	#date-created {
+		float: right;
+		margin: .8em .5em;
+		padding: 0;
+		color: @light-grey-text;
+		font-weight: 300;
+		font-size: 1em;
+	}
+	textarea {
+		float: left;
+		clear: both;
+		resize: none;
+		border: none;
+		border-radius: 5px;
+		padding: 2%;
+		width: 90%;
+		height: 8em;
+		margin: 0 0 0 3%;
+		color: @dark-grey-text;
+		font-size: 1.1em;
+		&:focus {
+			outline: none;
+		}
+	}
+	#rating-stars {
+		float: left;
+		position: relative;
+		left: 10%;
+		left: 10%;
+    	width: 80%;
+    	margin: 0;
+
+		.rating-star {
+			width: 15%;
+			margin: 1.2em .5em 0 .5em;
+		}
+	}
+	#submission-error {
+		color: @app-red;
+		text-align: center;
+	}
+	#delete-note {
+	    position: absolute;
+	    bottom: 5%;
+	    left: 30%;
+	    padding: 1.5em 3em;
+	    font-size: 1em;
+	    background: none;
+	    border: solid 1px @app-red;
+	    color: @app-red;
+	    border-radius: .5em;
+	}
+}

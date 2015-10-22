@@ -40,7 +40,7 @@
 			<!-- tasting_session.getWineData( tasting_session.selected_wines[ tasting_session.current_phase ] ) -->
 				
 				<button class="wine-spectator-rating" ng-show="tasting_session.current_wine.wine_spectator">{{ tasting_session.current_wine.wine_spectator}}</button>
-				<img class="photo" src='/images/icon-60@2x.png' />
+				<img class="photo" ng-src="{{getImageThumbnail(tasting_session.current_wine.photo_id)}}" />
 				<div class="data-container" ng-click="openWineDetails( tasting_session.current_wine._id )">
 					<h1 class="name"> {{ tasting_session.current_wine.name }}</h1>
 					<h3 class="location-and-cases fade-loc-cases"> {{ tasting_session.current_wine.location }} </h3>

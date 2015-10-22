@@ -65,4 +65,12 @@ function( $scope, $stateParams, $state, $rootScope, $meteor ) {
             }
         })
 	};
+
+	$scope.openNotesList = function() {
+		$state.go( 'notes' );
+	};
+
+	$scope.openReviewsList = function() {
+		$state.go( 'reviews' );
+	};
 }]);

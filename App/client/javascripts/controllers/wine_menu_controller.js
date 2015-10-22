@@ -14,6 +14,20 @@ function( $scope, $stateParams, $location, $rootScope, $meteor ) {
 				return Wines.find( { winery_id: $stateParams.winery_id }, { sort: { created_at: 1 } } );
 			});
 		});
+		// get images & subscribe to collection
+		$scope.$meteorSubscribe( 'images' ).then( function() { 
+			$scope.images = $meteor.collectionFS( Images, false, Images ) 
+		});
+	}
+
+	/**
+	 * Gets the thumbnail of each wine's image
+	 * @param {string} id - photo id to query
+	 */
+	$scope.getImageThumbnail = function( id ) {
+		if ( id && Images.findOne( id ) ) {
+      		return Images.findOne( id ).url({store: 'thumbnail'});
+    	}
 	}
 
 	/**

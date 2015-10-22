@@ -19,8 +19,8 @@
 				<p>(P.S. we don't post to your account or partake in any other shenanigans)</p>
 			</div>
 			<div id="user-menu" ng-show="user_logged_in">
-				<button>My Notes</button>
-				<button>My Reviews</button>
+				<button ng-click="openNotesList()">Your Notes</button>
+				<button ng-click="openReviewsList()">Your Reviews</button>
 			</div>
 		</div>
 	</div>

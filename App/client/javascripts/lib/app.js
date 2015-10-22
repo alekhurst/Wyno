@@ -51,12 +51,34 @@ angular.module( 'WynoApp' ).config( ['$stateProvider', '$urlRouterProvider', '$l
         templateUrl: app_root + 'wine_details.ng.html',
         controller: 'WineDetailsController',
     })
+    .state('notes', {
+        url: '/notes',
+        templateUrl: app_root + 'notes.ng.html',
+        controller: 'NotesController',
+    })
+    .state('edit_note', {
+        url: '/notes/:note_id/edit',
+        templateUrl: app_root + 'edit_note.ng.html',
+        controller: 'EditNoteController',
+        params: {wine_id: undefined}
+    })
+    .state('reviews', {
+        url: '/reviews',
+        templateUrl: app_root + 'reviews.ng.html',
+        controller: 'ReviewsController',
+    })
+    .state('edit_review', {
+        url: '/review/:review_id/edit',
+        templateUrl: app_root + 'edit_review.ng.html',
+        controller: 'EditReviewController',
+        params: {wine_id: undefined}
+    });
 
     $urlRouterProvider.otherwise('/');
 }]);
 
 // Keep history throughout browsing the app 
-angular.module( 'WynoApp' ).run( ['$rootScope', '$location', function( $rootScope, $location ) {
+angular.module( 'WynoApp' ).run( ['$rootScope', '$location', '$state', function( $rootScope, $location, $state ) {
   var history = [];
   
   $rootScope.$on( '$stateChangeSuccess', function() {
@@ -73,6 +95,12 @@ angular.module( 'WynoApp' ).run( ['$rootScope', '$location', function( $rootScop
    * the view. Hacky way to ng-repeat over a number
    */
   $rootScope.getArrayFromNumber = function( count ) {
+    if( !count ) {
+      return;
+    }
+    if( count != parseInt(count) ) {
+      count = Math.ceil(count);
+    }
     return new Array( count );
   }
 }])

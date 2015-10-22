@@ -47,6 +47,12 @@ Meteor.methods({
         	}
         });
 	},
+    deleteNote: function( note ) {
+        if ( !Meteor.userId() || Meteor.userId() !== note.user_id ) {
+            throw new Meteor.Error('not-authorized');
+        }
+        Notes.remove({_id: note._id});
+    },
 
     /**
      * Reviews CRUD
@@ -71,6 +77,14 @@ Meteor.methods({
             }
         });
         Meteor.call( 'refreshWineReviewData', updated_review.wine_id );
+    },
+    deleteReview: function( review ) {
+        if ( !Meteor.userId() || Meteor.userId() !== review.user_id ) {
+            throw new Meteor.Error('not-authorized');
+        }
+        var wine_id = review.wine_id;
+        Reviews.remove({_id: review._id});
+        Meteor.call( 'refreshWineReviewData', wine_id );
     },
     refreshWineReviewData: function( wine_id ) {
         var reviews = Reviews.find( { wine_id: wine_id } );

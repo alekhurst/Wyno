@@ -31,8 +31,35 @@
 			<h6>vintage quality</h6>
 			<img src="/images/vintage-chart.svg" />
 		</div>
+		<div class="module module-100" id="your-note-module">
+			<h6>your note</h6>
+			<div class="a-note" id="your-note" ng-show="checkForUserNote() === true">
+				<div class="stars-and-name">
+					<img class="rating-star" src="/images/star-selected.svg" ng-repeat="i in getArrayFromNumber(current_user_note.stars) track by $index">
+				</div>
+				<p class="text">{{current_user_note.text}}</p>
+			</div>
+			<button class="edit" ng-click="openEditNote(current_user_note._id)" ng-show="checkForUserNote() === true">
+				<img src="/images/edit_icon.svg" />
+			</button>
+			<button ng-click="openEditNote()" ng-show="!checkForUserNote()">take a note</button>
+		</div>
+		<div class="module module-100" id="your-review-module" ng-show="checkForUserReview() === true">
+			<h6>your review</h6>
+			<div class="a-review" id="your-review">
+				<div class="stars-and-name">
+					<img class="rating-star" src="/images/star-selected.svg" ng-repeat="i in getArrayFromNumber(current_user_review.stars) track by $index">
+				</div>
+				<p class="text">{{current_user_review.text}}</p>
+			</div>
+			<button class="edit" ng-click="openEditReview(current_user_review._id)">
+				<img src="/images/edit_icon.svg" />
+			</button>
+		</div>
 		<div class="module module-100" id="reviews-module">
-			<h6>reviews</h6>
+			<h6 ng-show="!checkForUserReview()">reviews</h6>
+			<h6 ng-show="checkForUserReview() === true">other reviews</h6>
+			<button ng-click="openEditReview()" ng-show="checkForUserReview() === false">submit a review</button>
 			<div class="a-review" ng-repeat="review in reviews">
 				<div class="stars-and-name">
 					<img class="rating-star" src="/images/star-selected.svg" ng-repeat="i in getArrayFromNumber(review.stars) track by $index">

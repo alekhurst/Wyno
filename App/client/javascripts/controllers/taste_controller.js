@@ -79,7 +79,7 @@ function( $scope, $stateParams, $location, $rootScope, $meteor, TasteFactory ) {
 		$scope.user_notes = {};
 		$scope.user_reviews = {};
 		// if user is logged in, get their notes & reviews
-		if( Meteor.userId ) {
+		if( Meteor.userId() ) {
 			$scope.getUserNotesAndReviews();
 		}
 	}
@@ -129,7 +129,7 @@ function( $scope, $stateParams, $location, $rootScope, $meteor, TasteFactory ) {
 	$scope.updateGuidanceText = function() {
 		num_selected =  $scope.tasting_session.selected_wines.length;
 		if( num_selected === 0 ) return '0 wines selected'; 
-		else return num_selected + '/6 selected'; 
+		else return num_selected + ' wines selected'; 
 	}
 
 	/**
@@ -420,7 +420,7 @@ function( $scope, $stateParams, $location, $rootScope, $meteor, TasteFactory ) {
 	 * When a user saves a review, calls the back end method.
 	 */
 	$scope.saveReview = function() {
-		var new_review, method_to_call
+		var new_review, method_to_call;
 		if( $scope.temp_review.state === "creating" ) {
 			// no previous note existed, create a new one
 			new_review = {
