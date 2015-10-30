@@ -6,7 +6,6 @@
 
 angularui:angular-ui-router
 less
-accounts-facebook
 service-configuration
 aldeed:collection2
 cfs:standard-packages
@@ -26,3 +25,4 @@ ejson
 spacebars
 check
 angular
+mrt:accounts-facebook-cordova

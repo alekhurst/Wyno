@@ -15,12 +15,12 @@
 			<button id="add-special" ng-click="addSpecial()"><img src="/images/plus-icon.svg"></button>
 		</div>
 		<div id="specials-list">
-			<div class="a-special" ng-repeat="special in specials">
+			<div class="a-special" ng-repeat="special in specials track by $index">
 				<h1 >{{ special.title }}</h1>
 				<div ng-if="special.wine_id" class="wine">
-					<h3 class="name">{{ special.associated_wine.name }}</h3>
-					<h3 class="location-and-cases">{{ special.associated_wine.location }} | {{ special.associated_wine.cases_produced }}</h3>
-					<h3 class="description">{{ special.associated_wine.description }}</h3>
+					<h3 class="name">{{ associated_wines[$index].name }}</h3>
+					<h3 class="location-and-cases">{{ associated_wines[$index].location }} | {{ associated_wines[$index].cases_produced }}</h3>
+					<h3 class="description">{{ associated_wines[$index].description }}</h3>
 				</div>
 				<div class="clear-inline"></div>
 				<div class="edit-and-delete">

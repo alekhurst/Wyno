@@ -13,12 +13,6 @@ function( $scope, $stateParams, $state, $rootScope, $meteor ) {
 		$scope.images = $meteor.collectionFS( Images, false, Images ) 
 	});
 
-	$scope.getImageOriginal = function( id ) {
-		if ( id && Images.findOne( id ) ) {
-      		return Images.findOne( id ).url({store: 'original'});
-    	}
-	}
-
 	/**
 	 * Called when user taps any button in this view.
 	 * @param {string} location : where to redirect

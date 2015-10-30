@@ -85,16 +85,6 @@ function( $scope, $stateParams, $location, $rootScope, $meteor, TasteFactory ) {
 	}
 
 	/**
-	 * Gets the thumbnail of each wine's image
-	 * @param {string} id - photo id to query
-	 */
-	$scope.getImageThumbnail = function( id ) {
-		if ( id && Images.findOne( id ) ) {
-      		return Images.findOne( id ).url({store: 'thumbnail'});
-    	}
-	}
-
-	/**
 	 * Toggles a wine's selected state, adds/removes it
 	 * from the tasting_session.selected_wines list, and 
 	 * updates the guidance text.

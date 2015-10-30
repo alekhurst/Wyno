@@ -8,22 +8,25 @@
 			background-color: @app-red;
 			color: #f49c9c;
 			padding: .8em 1.5em;
+			margin: 3% 3% .8em 3%;
 			font-size: .9em;
-			border-radius: 1em;
+			border-radius: .5em;
 		} #select {
 			width: auto;
 			background-color: @app-red;
 			color: #f49c9c;
 			padding: .8em 1.5em;
+			margin: 3% 3% .8em 3%;
 			font-size: .9em;
-			border-radius: 1em;
+			border-radius: .5em;
 		} #unselect {
 			width: auto;
 			padding: .7em 1.4em;
-			border-radius: 1em;
+			border-radius: .5em;
 			color: @app-red;
 			background-color: transparent;
 			padding: .7em .7em;
+			margin: 3% 3% .8em 3%;
 			font-size: .9em;
 			border: solid 1px @app-red;
 			right: 0;
@@ -141,17 +144,6 @@
 			h6 {
 				margin-bottom: .5em;
 			}
-			button {
-				width: 100%;
-				background: none;
-				margin: 0 0 1em 0;
-				padding: 1em 0;
-				border: solid 1px @dark-grey-text;
-				border-radius: .5em;
-				&:focus {
-					outline: none;
-				}
-			}
 			.a-review {
 				position: relative;
 				float: left;
@@ -234,15 +226,30 @@
 					width: 2.1em;
 				}
 			}
+		} #your-review-module, #your-note-module, #reviews-module {
 			button {
 				width: 100%;
 				background: none;
 				margin: 0 0 1em 0;
+				font-size: 1em;
+				font-weight: 300;
 				padding: 1em 0;
 				border: solid 1px @dark-grey-text;
 				border-radius: .5em;
 				&:focus {
 					outline: none;
+				}
+			}
+			.login-button {
+				p {
+					position: relative;
+					top: -.5em;
+					display: inline;
+					margin-left: .3em;
+				}
+				padding: .5em 0;
+				img {
+					height: 2em;
 				}
 			}
 		}

@@ -14,7 +14,7 @@
 				<img class="selected-indicator"  
 				     src="/images/selected_wine_check.png" ng-click="toggleSelected( wine._id )" ng-show="checkIfSelected( wine._id )"/>
 				<div class="data-container" ng-click="openWineDetails( wine._id )">
-					<h1 class="name"> {{ wine.name }}</h1>
+					<h1 class="name"> {{ wine.vintage }} {{ wine.name }}</h1>
 					<h3 class="location-and-cases fade-loc-cases"> {{ wine.location }} </h3>
 					<h3 class="location-and-cases">{{ wine.cases_produced }} cases produced</h3>
 					<div class="rating" ng-show="wine.reviews.avg_rating">
@@ -108,7 +108,7 @@
 		<div id="phase-buttons" ng-show="tasting_session.selected_wines.length">
 			<button ng-show="tasting_session.current_phase >= 1 && (tasting_session.current_phase !== tasting_session.phases.length-1)" ng-click="changePhase('prev')" class="phase-button">prev round</button>
 			<button ng-show="tasting_session.current_phase < tasting_session.phases.length-1" ng-click="changePhase( 'next' )" class="phase-button">next round!</button>
-			<button ng-show="tasting_session.current_phase === tasting_session.phases.length-1" class="phase-button">all done!</button>
+			<button ng-show="tasting_session.current_phase === tasting_session.phases.length-1" class="phase-button" ng-click="goBack()">all done!</button>
 			<br>
 			<button ng-show="tasting_session.phases.length && (tasting_session.current_phase === tasting_session.phases.length-1) && tasting_session.current_phase !== 0" ng-click="changePhase( 'prev' )" id="done-prev-button">prev round</button>
 		</div>

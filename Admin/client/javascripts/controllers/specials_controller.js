@@ -6,6 +6,7 @@ function( $scope, $stateParams, $meteor ) {
 	$scope.editing = false;
 	$scope.adding = false;
 	$scope.temp_special = {};
+	$scope.associated_wines = [];
 	$scope.$meteorSubscribe( 'specials' ).then( function() {
 		$scope.specials = $meteor.collection( function() {
 	        return Specials.find( { winery_id: $stateParams.winery_id }, { sort: { created_at: 1 } } );
@@ -25,7 +26,7 @@ function( $scope, $stateParams, $meteor ) {
     $scope.getAssociatedWines = function() {
     	var i;
 		for( i = 0; i < $scope.specials.length; i++ ) {
-			$scope.specials[ i ].associated_wine = Wines.findOne( $scope.specials[ i ].wine_id )
+			$scope.associated_wines[i] = Wines.findOne( $scope.specials[ i ].wine_id )
 		}
     }
 

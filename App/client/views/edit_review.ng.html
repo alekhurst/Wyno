@@ -1,11 +1,11 @@
 <main id="edit-review-view">
 	<header>
 		<button class="back-button" id="cancel-button" ng-click="goBack()">cancel</button>
-		<p class="guidance-text guidance-vertically-centered">Edit this review</p>
+		<p class="guidance-text guidance-vertically-centered">{{ header_text }}</p>
 		<button class="forward-button" id="save-button" ng-click="saveReview()">save</button>
 	</header>
-	<h4 id="wine-info">{{ getAssociatedWine() }}</h4>
 	<h4 id="date-created">{{ createReadableDate() }}</h4>
+	<h4 id="wine-info">{{ getAssociatedWine() }}</h4>
 	<textarea ng-model='temp_review.text'></textarea>
 	<div id="rating-stars">
 		<img class="rating-star" src="/images/star-unselected.svg" ng-click="selectRatingStars( 1 )" ng-hide="temp_review.stars >= 1"/>
@@ -21,5 +21,5 @@
 	</div>
 	<div id='clear-inline'></div>
 	<h4 id="submission-error">{{ submission_err }}</h4>
-	<button id="delete-review" ng-show="editing_a_review" ng-click="deleteReview()">Delete Review</button>
+	<button id="delete" ng-show="editing_a_review" ng-click="deleteReview()">Delete Review</button>
 </main>

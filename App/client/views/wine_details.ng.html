@@ -6,7 +6,7 @@
 		<button class="forward-button" id="unselect" ng-hide="just_browsing || !current_tasting.find( this_wine._id )" ng-click="unselectWine()">unselect</button>
 	</header>
 	<!-- hacky way to show tasting menu below dynamically-sized & fixed container-->
-	<h1 id="title">{{ this_wine.name }}</h1>
+	<h1 id="title">{{ this_wine.vintage }} {{ this_wine.name }}</h1>
 	<h2 id="subtitle">${{ this_wine.price.per_glass }} glass | ${{ this_wine.price.per_bottle }} bottle | ${{ this_wine.price.per_case }} case</h2>
 	<img id="photo" ng-src="{{getImageOriginal(this_wine.photo_id)}}" />
 	<div id="modules-container">
@@ -32,7 +32,7 @@
 			<img src="/images/vintage-chart.svg" />
 		</div>
 		<div class="module module-100" id="your-note-module">
-			<h6>your note</h6>
+			<h6>your personal note</h6>
 			<div class="a-note" id="your-note" ng-show="checkForUserNote() === true">
 				<div class="stars-and-name">
 					<img class="rating-star" src="/images/star-selected.svg" ng-repeat="i in getArrayFromNumber(current_user_note.stars) track by $index">
@@ -42,7 +42,8 @@
 			<button class="edit" ng-click="openEditNote(current_user_note._id)" ng-show="checkForUserNote() === true">
 				<img src="/images/edit_icon.svg" />
 			</button>
-			<button ng-click="openEditNote()" ng-show="!checkForUserNote()">take a note</button>
+			<button ng-click="openEditNote()" ng-show="checkForUserNote() === false">take a note</button>
+			<button class="login-button" ng-show="checkForUserNote() === 'not_logged_in'" ng-click="loginWithFacebook()"><img src="/images/fb_logo.png" /> <p>log in with facebook to take a note</p></button>
 		</div>
 		<div class="module module-100" id="your-review-module" ng-show="checkForUserReview() === true">
 			<h6>your review</h6>
@@ -57,9 +58,10 @@
 			</button>
 		</div>
 		<div class="module module-100" id="reviews-module">
-			<h6 ng-show="!checkForUserReview()">reviews</h6>
-			<h6 ng-show="checkForUserReview() === true">other reviews</h6>
+			<h6 ng-show="checkForUserReview() !== true">reviews</h6>
+			<h6 ng-show="checkForUserReview() === true">all reviews</h6>
 			<button ng-click="openEditReview()" ng-show="checkForUserReview() === false">submit a review</button>
+			<button class="login-button" ng-show="checkForUserReview() === 'not_logged_in'" ng-click="loginWithFacebook()"><img src="/images/fb_logo.png" /> <p>log in with facebook to review</p></button>
 			<div class="a-review" ng-repeat="review in reviews">
 				<div class="stars-and-name">
 					<img class="rating-star" src="/images/star-selected.svg" ng-repeat="i in getArrayFromNumber(review.stars) track by $index">

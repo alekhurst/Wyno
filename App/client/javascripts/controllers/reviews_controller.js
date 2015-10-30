@@ -46,7 +46,7 @@ function( $scope, $stateParams, $state, $rootScope, $meteor ) {
 		var data_string = ''; // will contains the winery name & wine name
 		var temp_wine = $scope.$meteorObject(Wines, wine_id, false);
 		var temp_winery = $scope.$meteorObject(Wineries, temp_wine.winery_id, false);
-		return temp_winery.name + " " + temp_wine.name;
+		return temp_winery.name + " " + temp_wine.vintage + " " + temp_wine.name;
 	}
 
 	/**

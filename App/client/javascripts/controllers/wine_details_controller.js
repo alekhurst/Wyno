@@ -38,15 +38,6 @@ function( $scope, $state, $stateParams, $rootScope, $meteor, TasteFactory ) {
 			$scope.images = $meteor.collectionFS( Images, false, Images ) 
 		});
 	}
-
-	/**
-	 * Gets the full sized wine image for displaying in the view
-	 */
-	$scope.getImageOriginal = function( id ) {
-		if ( id && Images.findOne( id ) ) {
-      		return Images.findOne( id ).url({store: 'original'});
-    	}
-	}
 	
 	/**
 	 * Selects a wine if we came from a tasting and the button
@@ -83,12 +74,17 @@ function( $scope, $state, $stateParams, $rootScope, $meteor, TasteFactory ) {
 	}
 
 	/**
-	 * Returns true if the user has already taken a note on this wine.
-	 * returns false otherwise
+	 * Returns true if the user has already reviewed this wine
+	 * . Returns false if user is logged in but has not reviewed
+	 * this note. Returns "not_logged_in" if user is not logged 
+	 * in. Returns undefined if data isn't ready.
 	 */
 	$scope.checkForUserNote = function() {
-		if( !Meteor.userId() || !$scope.this_wine || !$scope.notes ) {
-			return undefined;
+		if( !$scope.this_wine || !$scope.notes ) {
+			return undefined
+		}
+		if( !Meteor.userId() ) {
+			return "not_logged_in";
 		}
 
 		for( var i = 0; i < $scope.notes.length; i++ ) {
@@ -114,11 +110,16 @@ function( $scope, $state, $stateParams, $rootScope, $meteor, TasteFactory ) {
 
 	/**
 	 * Returns true if the user has already reviewed this wine
-	 * returns false otherwise
+	 * . Returns false if user is logged in but has not reviewed
+	 * this note. Returns "not_logged_in" if user is not logged 
+	 * in. Returns undefined if data isn't ready.
 	 */
 	$scope.checkForUserReview = function() {
-		if( !Meteor.userId() || !$scope.this_wine || !$scope.reviews ) {
-			return undefined;
+		if( !$scope.this_wine || !$scope.reviews ) {
+			return undefined
+		}
+		if( !Meteor.userId() ) {
+			return "not_logged_in";
 		}
 
 		for( var i = 0; i < $scope.reviews.length; i++ ) {

@@ -85,6 +85,12 @@ angular.module( 'WynoApp' ).run( ['$rootScope', '$location', '$state', function(
     history.push( $location.$$path );
   });
 
+  $rootScope.user_logged_in = (function() {
+      if( Meteor.userId() )
+          return true;
+      return false;
+  })();
+
   $rootScope.goBack = function () {
     var prevUrl = history.length > 1 ? history.splice(-2)[0] : "/";
     $location.path( prevUrl );
@@ -102,6 +108,51 @@ angular.module( 'WynoApp' ).run( ['$rootScope', '$location', '$state', function(
       count = Math.ceil(count);
     }
     return new Array( count );
+  }
+
+  /**
+   * Logs the user into facebook
+   */
+  $rootScope.loginWithFacebook = function() {
+    Meteor.loginWithFacebook({requestPermissions: ['email']}, function(err){
+      if (err) {
+        throw new Meteor.Error("Facebook login failed");
+      } else {
+        $rootScope.user_logged_in = true;
+      }
+    });
+  };
+
+  /**
+   * Logs the user out of facebook
+   */
+  $rootScope.logout = function() {
+    Meteor.logout(function(err){
+      if (err) {
+        throw new Meteor.Error("Logout failed");
+      } else {
+        $rootScope.user_logged_in = false;
+      }
+    })
+  }
+
+  /**
+   * Gets the full sized image for displaying in the view
+   */
+  $rootScope.getImageOriginal = function( id ) {
+    if ( id && Images.findOne( id ) ) {
+      return Images.findOne( id ).url({store: 'original'});
+    }
+  }
+
+  /**
+   * Gets the thumbnail of each wine's image
+   * @param {string} id - photo id to query
+   */
+  $rootScope.getImageThumbnail = function( id ) {
+    if ( id && Images.findOne( id ) ) {
+      return Images.findOne( id ).url({store: 'thumbnail'});
+    }
   }
 }])
 

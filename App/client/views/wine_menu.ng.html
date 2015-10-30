@@ -9,7 +9,7 @@
 			<button class="wine-spectator-rating" ng-show="wine.wine_spectator">{{ wine.wine_spectator }}</button>
 			<img class="photo" ng-src="{{getImageThumbnail(wine.photo_id)}}" />
 			<div class="data-container" ng-click="openWineDetails( wine._id )">
-				<h1 class="name"> {{ wine.name }}</h1>
+				<h1 class="name">{{ wine.vintage }} {{ wine.name }}</h1>
 				<h3 class="location-and-cases fade-loc-cases"> {{ wine.location }} | {{ wine.cases_produced }} cases produced</h3>
 				<div class="rating" ng-show="wine.reviews.avg_rating">
 					<img class="rating-star" src="/images/star-selected.svg" ng-repeat="i in getArrayFromNumber(wine.reviews.avg_rating) track by $index"><h3>{{wine.reviews.count}}

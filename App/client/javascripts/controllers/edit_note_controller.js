@@ -7,8 +7,10 @@ angular.module( 'WynoApp' ).controller( 'EditNoteController', [
 function( $scope, $stateParams, $state, $rootScope, $meteor ) {
 	$rootScope.body_bg_color = "#F4F4F4"; 
 	$scope.temp_note = {};
+	$scope.header_text = '';
 	$scope.editing_a_note = undefined;
 	$scope.submit_deactivated = false;
+
 
 	// if there's no user logged in, or there was no wine_id
 	// provided, just go back
@@ -19,11 +21,13 @@ function( $scope, $stateParams, $state, $rootScope, $meteor ) {
 	// if we're creating a note, initialize some properties
 	// to display in the view
 	if($stateParams.note_id === 'new') {
+		$scope.header_text = "Create a note";
 		$scope.temp_note = {
 			created_at: Date.now()
 		}
 	} else {
 		// if we got here, we're editing a previous note
+		$scope.header_text = "Edit this note";
 		$scope.editing_a_note = true;
 		$scope.$meteorSubscribe( 'notes' ).then( function() {
 			$scope.temp_note = angular.copy($scope.$meteorCollection( function() {
@@ -54,7 +58,7 @@ function( $scope, $stateParams, $state, $rootScope, $meteor ) {
 		var data_string = ''; // will contains the winery name & wine name
 		var temp_wine = $scope.wines[0];
 		var temp_winery = $scope.$meteorObject(Wineries, temp_wine.winery_id, false);
-		return temp_winery.name + " " + temp_wine.name;
+		return temp_winery.name + " " + temp_wine.vintage + " " + temp_wine.name;
 	}
 
 	/**
@@ -70,7 +74,7 @@ function( $scope, $stateParams, $state, $rootScope, $meteor ) {
 	 */
 	$scope.createReadableDate = function() {
 		if( !$scope.temp_note ) {
-			return;
+			return " ";
 		}
 		var timestamp = $scope.temp_note.created_at;
 		var date = new Date( Number( timestamp ) );

@@ -1,7 +1,7 @@
 @import "./variables.import.less";
 
-#user-reviews-view {
-	.a-review {
+#user-reviews-view, #user-notes-view {
+	.a-review, .a-note {
 		background-color: white;
 		overflow: auto;
 		display: block;
@@ -18,8 +18,9 @@
 		}
 		.date-created {
 			display: block;
-			float: right;
-			margin: 0;
+			float: left;
+			clear: left;
+			margin: 0 .2em 0 0;
 			color: @light-grey-text;
 			font-weight: 300;
 		}
@@ -33,8 +34,8 @@
 		}
 		.rating {
 			float: left;
-			clear: both;
 			margin: 1px 0 0 0;
+			min-width: 5em;
 			.rating-star {
 				display: block;
 				float: left;

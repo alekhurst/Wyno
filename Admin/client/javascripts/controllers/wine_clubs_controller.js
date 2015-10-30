@@ -5,7 +5,7 @@ angular.module( 'WynoAdmin' ).controller( 'WineClubsController', [
 function( $scope, $stateParams, $meteor ) {
 	$scope.$meteorSubscribe( 'wine_clubs' ).then( function() {
 		$scope.wine_clubs = $meteor.collection( function() {
-	        return WineClubs.find( {}, { sort: { created_at: 1 } } );
+	        return WineClubs.find( { winery_id: $stateParams.winery_id }, { sort: { created_at: 1 } } );
 	    });
 	});
 	$scope.temp_wine_club = {};
@@ -30,6 +30,7 @@ function( $scope, $stateParams, $meteor ) {
 	$scope.editWineClub = function( id ) {
 		$scope.editing = true;
 		$scope.temp_wine_club = WineClubs.findOne( id )
+		$scope.temp_wine_club.deal.quantity = $scope.temp_wine_club.deal.quantity.toString();
 	}
 
 	$scope.deleteWineClub = function( id ) {

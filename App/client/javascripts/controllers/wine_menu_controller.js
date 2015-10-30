@@ -21,16 +21,6 @@ function( $scope, $stateParams, $location, $rootScope, $meteor ) {
 	}
 
 	/**
-	 * Gets the thumbnail of each wine's image
-	 * @param {string} id - photo id to query
-	 */
-	$scope.getImageThumbnail = function( id ) {
-		if ( id && Images.findOne( id ) ) {
-      		return Images.findOne( id ).url({store: 'thumbnail'});
-    	}
-	}
-
-	/**
 	 * Open details for a selected wine
 	 * @param { Number } id
 	 */

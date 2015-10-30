@@ -7,6 +7,7 @@ angular.module( 'WynoApp' ).controller( 'EditReviewController', [
 function( $scope, $stateParams, $state, $rootScope, $meteor ) {
 	$rootScope.body_bg_color = "#F4F4F4"; 
 	$scope.temp_review = {};
+	$scope.header_text = '';
 	$scope.editing_a_review = undefined;
 	$scope.submit_deactivated = false;
 
@@ -19,11 +20,13 @@ function( $scope, $stateParams, $state, $rootScope, $meteor ) {
 	// if we're creating a review, initialize some properties
 	// to display in the view
 	if($stateParams.review_id === 'new') {
+		$scope.header_text = "Create a review";
 		$scope.temp_review = {
 			created_at: Date.now()
 		}
 	} else {
 		// if we got here, we're editing a previous review
+		$scope.header_text = "Edit this review";
 		$scope.editing_a_review = true;
 		$scope.$meteorSubscribe( 'reviews' ).then( function() {
 			$scope.temp_review = angular.copy($scope.$meteorCollection( function() {
@@ -54,7 +57,7 @@ function( $scope, $stateParams, $state, $rootScope, $meteor ) {
 		var data_string = ''; // will contains the winery name & wine name
 		var temp_wine = $scope.wines[0];
 		var temp_winery = $scope.$meteorObject(Wineries, temp_wine.winery_id, false);
-		return temp_winery.name + " " + temp_wine.name;
+		return temp_winery.name + " " + temp_wine.vintage + " " + temp_wine.name;
 	}
 
 	/**

@@ -1,12 +1,29 @@
 @import "./variables.import.less";
 
-#edit-review-view {
+/* Iphone 5s special stars */
+@media only screen 
+and (min-device-width : 320px) 
+and (max-device-width : 374px) 
+and (orientation : portrait) {
+	#edit-note-view, #edit-review-view {
+		.rating-star {
+			width: 14% !important;
+			margin: 1.2em .5em 0 .5em !important;
+		}
+		header p {
+			width: 53% !important;
+		}
+	}
+}
+
+#edit-note-view, #edit-review-view {
 	header {
 		#cancel-button {
 			width: auto;
 			background-color: @app-red;
 			color: #f49c9c;
 			padding: .8em 1.5em;
+			margin: 3% 3% .8em 3%;
 			font-size: .9em;
 			border-radius: .5em;
 		}
@@ -19,6 +36,7 @@
 			background-color: @app-red;
 			color: #f49c9c;
 			padding: .8em 1.5em;
+			margin: 3% 3% .8em 3%;
 			font-size: .9em;
 			border-radius: .5em;
 		}
@@ -33,7 +51,7 @@
 	}
 	#date-created {
 		float: right;
-		margin: .8em .5em;
+		margin: .8em .5em 0 .5em;
 		padding: 0;
 		color: @light-grey-text;
 		font-weight: 300;
@@ -72,7 +90,7 @@
 		color: @app-red;
 		text-align: center;
 	}
-	#delete-review {
+	#delete {
 	    position: absolute;
 	    bottom: 5%;
 	    left: 30%;
