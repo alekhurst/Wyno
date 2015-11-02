@@ -1,9 +1,9 @@
-<main id="winery-selection-view">
+<main id="winery-selection-view" show-loading-spinner="images === undefined || wineries === undefined || facebook_loading">
 	<header>
 		<button id="login-button" ng-click="showUserPanel()"><img src="/images/menu-icon.svg" /></button>
 		<p class="guidance-text">Select a winery</p>
 	</header>
-	<div id="user-panel" ng-class="{'open': user_panel_showing}">
+	<div id="user-panel" ng-class="{'open': user_panel_showing}" >
 		<button id="close-user-panel" class="user-panel-function" ng-click="hideUserPanel()">close</button>
 		<button id="logout" class="user-panel-function" ng-show="user_logged_in" ng-click="logout()">logout</button>
 		<div id="panel-content">
@@ -25,7 +25,7 @@
 		</div>
 	</div>
 	<div class="header-gap"></div>
-	<div class="a-winery" ng-repeat="winery in wineries">
+	<div class="a-winery" ng-repeat="winery in wineries" >
 		<img ng-src="{{getImageOriginal(winery.logo_id)}}">
 		<div class="clear-inline"></div>
 		<button class="select-winery" ng-click="selectWinery( winery )">{{ winery.name }}</button>

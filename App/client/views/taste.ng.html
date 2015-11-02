@@ -1,4 +1,4 @@
-<main id="taste-view">
+<main id="taste-view" show-loading-spinner="view_loading">
 	<!-- choosing view : initially shown -->
 	<div id="choosing" ng-show="state === 'choosing'">
 		<header>
@@ -61,18 +61,9 @@
 			</div>
 			<div id="note" ng-show="note_or_review.state === 'note'">
 				<textarea rows="5" ng-model="temp_note.text"></textarea>
-				<img class="rating-star" src="/images/star-unselected.svg" ng-click="selectRatingStars( 1 )" ng-hide="temp_note.stars_selected >= 1"/>
-				<img class="rating-star" src="/images/star-selected.svg" ng-click="selectRatingStars( 1 )" ng-show="temp_note.stars_selected >= 1"/>
-				<img class="rating-star" src="/images/star-unselected.svg" ng-click="selectRatingStars( 2 )" ng-hide="temp_note.stars_selected >= 2"/>
-				<img class="rating-star" src="/images/star-selected.svg" ng-click="selectRatingStars( 2 )" ng-show="temp_note.stars_selected >= 2"/>
-				<img class="rating-star" src="/images/star-unselected.svg" ng-click="selectRatingStars( 3 )" ng-hide="temp_note.stars_selected >= 3"/>
-				<img class="rating-star" src="/images/star-selected.svg" ng-click="selectRatingStars( 3 )" ng-show="temp_note.stars_selected >= 3"/>
-				<img class="rating-star" src="/images/star-unselected.svg" ng-click="selectRatingStars( 4 )" ng-hide="temp_note.stars_selected >= 4"/>
-				<img class="rating-star" src="/images/star-selected.svg" ng-click="selectRatingStars( 4 )" ng-show="temp_note.stars_selected >= 4"/>
-				<img class="rating-star" src="/images/star-unselected.svg" ng-click="selectRatingStars( 5 )" ng-hide="temp_note.stars_selected >= 5"/>
-				<img class="rating-star" src="/images/star-selected.svg" ng-click="selectRatingStars( 5 )" ng-show="temp_note.stars_selected >= 5"/>
 				<h4 class="save-note-button" ng-click="saveNote()" ng-show="temp_note.state === 'creating'">save note</h4>
 				<h4 class="save-note-button" ng-click="saveNote()" ng-show="temp_note.state === 'editing'">update note</h4>
+				<h4 class="guidance" ng-show="temp_note.state === 'creating'">(notes can only be seen by you)</h4>
 				<h4 class="error-saving">{{ temp_note.err }}</h4>
 			</div>
 			<div id="review" ng-show="note_or_review.state === 'review'">
@@ -89,6 +80,7 @@
 				<img class="rating-star" src="/images/star-selected.svg" ng-click="selectRatingStars( 5 )" ng-show="temp_review.stars_selected >= 5"/>
 				<h4 class="submit-review-button" ng-click="saveReview()" ng-show="temp_review.state === 'creating'">post review</h4>
 				<h4 class="submit-review-button" ng-click="saveReview()" ng-show="temp_review.state === 'editing'">update review</h4>
+				<h4 class="guidance" ng-show="temp_review.state === 'creating'">(reviews can be seen by others)</h4>
 				<h4 class="error-saving">{{ temp_review.err }}</h4>
 			</div>
 		</div>

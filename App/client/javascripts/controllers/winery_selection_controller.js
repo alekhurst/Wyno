@@ -12,9 +12,9 @@ function( $scope, $stateParams, $state, $rootScope, $meteor ) {
 		$scope.wineries = $meteor.collection( function() {
 			return Wineries.find({});
 		});
-		$scope.$meteorSubscribe( 'images' ).then( function() { 
-			$scope.images = $meteor.collectionFS( Images, false, Images ) 
-		});
+	});
+	$scope.$meteorSubscribe( 'images' ).then( function() { 
+		$scope.images = $meteor.collectionFS( Images, false, Images );
 	});
 
 	/**

@@ -1,0 +1,7 @@
+<div>
+  <div ng-show="loading && !timeout" class="my-loading-spinner-container"></div>
+  <div ng-show="loading && timeout === true" class="error-loading-data">Sorry, there was an error.
+    <button>reload</button>
+  </div>
+  <div ng-hide="loading" ng-transclude></div>
+</div>

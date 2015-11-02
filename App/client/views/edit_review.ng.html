@@ -1,4 +1,4 @@
-<main id="edit-review-view">
+<main id="edit-review-view" show-loading-spinner="temp_review === undefined || getAssociatedWine() === false">
 	<header>
 		<button class="back-button" id="cancel-button" ng-click="goBack()">cancel</button>
 		<p class="guidance-text guidance-vertically-centered">{{ header_text }}</p>

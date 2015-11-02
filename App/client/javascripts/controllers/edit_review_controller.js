@@ -6,7 +6,7 @@ angular.module( 'WynoApp' ).controller( 'EditReviewController', [
 '$meteor',
 function( $scope, $stateParams, $state, $rootScope, $meteor ) {
 	$rootScope.body_bg_color = "#F4F4F4"; 
-	$scope.temp_review = {};
+	$scope.temp_review = undefined;
 	$scope.header_text = '';
 	$scope.editing_a_review = undefined;
 	$scope.submit_deactivated = false;
@@ -51,7 +51,7 @@ function( $scope, $stateParams, $state, $rootScope, $meteor ) {
 	 */
 	$scope.getAssociatedWine = function() {
 		if( !$scope.wines|| !$scope.wineries || !$scope.temp_review ) {
-			return;
+			return false;
 		}
 		
 		var data_string = ''; // will contains the winery name & wine name

@@ -1,10 +1,10 @@
-<main id="winery-home-view">
+<main id="winery-home-view" show-loading-spinner="getImageOriginal(current_winery.logo_id) === false">
 	<header>
 		<button class="back-button" ng-click="goBack()"><img src="/images/tasting_back_button.svg" /></button>
 		<p class="guidance-text vertically-centered">{{ current_winery.name }}</p>
 		<button class="forward-button" ng-click="goTo( 'taste' )"> <img src="/images/taste_button.svg"/> </button>
 	</header>
-	<img id="logo" style='height:10%' ng-src="{{getImageOriginal(current_winery.logo_id)}}">
+	<img id="logo" ng-src="{{getImageOriginal(current_winery.logo_id)}}" ng-show="current_winery.logo_id !== undefined">
 	<img class="feature-icon" src="/images/begin_tasting_icon.svg" ng-click="goTo( 'taste' )"/>
 	<img class="feature-icon" src="/images/specials_icon.svg" ng-click="goTo( 'specials' )"/>
 	<img class="feature-icon" src="/images/wine_club_icon.svg" ng-click="goTo( 'wine_club' )"/>

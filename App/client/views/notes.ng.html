@@ -1,4 +1,4 @@
-<main id="user-notes-view">
+<main id="user-notes-view" show-loading-spinner="user_notes === undefined">
 	<header>
 		<button class="back-button" ng-click="goBack()"><img src="/images/tasting_back_button.svg" /></button>
 		<p class="guidance-text guidance-vertically-centered">Your Notes</p>
@@ -6,9 +6,6 @@
 	<div class='a-note' ng-repeat="note in user_notes" ng-click="editNote(note._id, note.wine_id)">
 		<h4 class='pertaining-wine'>{{getAssociatedWineAndWinery(note.wine_id)}}</h4>
 		<h4 class='date-created'>{{createReadableDate(note.created_at)}}</h4>
-		<div class='rating' ng-show="note.stars">
-			<img class="rating-star" src="/images/star-selected.svg" ng-repeat="i in getArrayFromNumber(note.stars) track by $index">
-		</div>
 		<p class='content'>{{note.text}}</p>
 	</div>
 </main>

@@ -1,11 +1,12 @@
 App.configurePlugin('com.phonegap.plugins.facebookconnect', {
-  APP_ID: '767742936685686',
+  // APP_ID: '767742936685686', // prod
+  APP_ID: '767743096685670', // dev
   APP_NAME: 'Wyno'
 });
 
 App.info({
   name: 'Wyno',
-  description: 'Your personal wine tasting assistant. Wyno is currently in open beta, feel free to give it a whirl!',
+  description: 'Your personal wine tasting assistant.',
   author: 'Alek Hurst',
   version: '0.0.1'
 });

@@ -22,6 +22,7 @@ function( $scope, $stateParams, $state, $rootScope, $meteor ) {
 	// to display in the view
 	if($stateParams.note_id === 'new') {
 		$scope.header_text = "Create a note";
+		$scope.editing_or_creating = "creating";
 		$scope.temp_note = {
 			created_at: Date.now()
 		}
@@ -52,7 +53,7 @@ function( $scope, $stateParams, $state, $rootScope, $meteor ) {
 	 */
 	$scope.getAssociatedWine = function() {
 		if( !$scope.wines|| !$scope.wineries || !$scope.temp_note ) {
-			return;
+			return false;
 		}
 		
 		var data_string = ''; // will contains the winery name & wine name

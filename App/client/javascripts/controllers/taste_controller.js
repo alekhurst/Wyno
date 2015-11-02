@@ -49,6 +49,8 @@ function( $scope, $stateParams, $location, $rootScope, $meteor, TasteFactory ) {
 	$scope.initialize = function() {
 		// white background for this page
 		$rootScope.body_bg_color = "white";
+		// set view loading to true;
+		$scope.view_loading = true;
 		// get current winery
 		$scope.winery_id = $stateParams.winery_id ;
 		// put a reference to TasteFactory in the scope
@@ -63,6 +65,7 @@ function( $scope, $stateParams, $location, $rootScope, $meteor, TasteFactory ) {
 		});
 		// get images & subscribe to collection
 		$scope.$meteorSubscribe( 'images' ).then( function() { 
+			$scope.view_loading = false;
 			$scope.images = $meteor.collectionFS( Images, false, Images ) 
 		});
 		// if the current winery_id differs from tasting_session.winery_id,

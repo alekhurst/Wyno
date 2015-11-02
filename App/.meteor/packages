@@ -14,9 +14,7 @@ standard-minifiers
 meteor-base
 mobile-experience
 mongo
-blaze-html-templates
 session
-jquery
 tracker
 logging
 reload
@@ -26,3 +24,4 @@ spacebars
 check
 angular
 mrt:accounts-facebook-cordova
+blaze-html-templates

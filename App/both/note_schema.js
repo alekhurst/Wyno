@@ -18,11 +18,6 @@ Schema.Note = new SimpleSchema({
         type: String,
         min: 20,
         max: 300
-    },
-    stars: {
-        type: Number,
-        min: 1,
-        max: 5
     }
 });
 
