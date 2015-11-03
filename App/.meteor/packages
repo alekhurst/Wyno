@@ -23,5 +23,6 @@ ejson
 spacebars
 check
 angular
-mrt:accounts-facebook-cordova
 blaze-html-templates
+accounts-ui
+mrt:accounts-facebook-cordova

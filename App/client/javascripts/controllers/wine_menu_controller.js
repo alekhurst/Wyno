@@ -5,7 +5,7 @@ angular.module( 'WynoApp' ).controller( 'WineMenuController', [
 '$rootScope',
 '$meteor',
 function( $scope, $stateParams, $location, $rootScope, $meteor ) {
-	$rootScope.body_bg_color = "white";
+	$rootScope.setBackgroundColor( "white" );
 
 	$scope.initialize = function() {
 		// get the wines & bind to wines collection

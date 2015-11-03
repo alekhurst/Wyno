@@ -5,7 +5,7 @@ angular.module( 'WynoApp' ).controller( 'WinerySelectionController', [
 '$rootScope',
 '$meteor',
 function( $scope, $stateParams, $state, $rootScope, $meteor ) {
-	$rootScope.body_bg_color = "#F4F4F4";
+	$rootScope.setBackgroundColor( "#F4F4F4" );
 	$scope.user_panel_showing = false;
 	
 	$scope.$meteorSubscribe( 'wineries' ).then( function() {

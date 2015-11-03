@@ -5,7 +5,7 @@ angular.module( 'WynoApp' ).controller( 'ReviewsController', [
 '$rootScope',
 '$meteor',
 function( $scope, $stateParams, $state, $rootScope, $meteor ) {
-	$rootScope.body_bg_color = "#F4F4F4";
+	$rootScope.setBackgroundColor( "#F4F4F4" );
 
 	$scope.$meteorSubscribe( 'reviews' ).then( function() {
 		$scope.user_reviews = $meteor.collection( function() {

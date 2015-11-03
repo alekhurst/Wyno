@@ -1,4 +1,4 @@
-angular.module('WynoApp').directive('showLoadingSpinner', ['$timeout', function($timeout) {
+angular.module('WynoApp').directive('showLoadingSpinner', ['$timeout', '$location', '$window', function( $timeout, $location, $window ) {
   return {
     restrict: 'A',
     replace: true,
@@ -8,8 +8,29 @@ angular.module('WynoApp').directive('showLoadingSpinner', ['$timeout', function(
     },
     templateUrl: 'client/views/loading.ng.html',
     link: function(scope, element, attrs) {
-      scope.timeout = false;
+      scope.timed_out = false;
       
+      /**
+       * This is super hacky. Here we basically set a watch on loading, 
+       * when the page is loading we set a timer, which shows the user
+       * the refresh button when the loading times out. If the page is
+       * done loading, we set clear the timeout.
+       */
+      scope.$watch('loading', function() {
+        if( scope.loading === true ) {
+          // if we're on home page, change timeout to 30 seconds
+          scope.timeout = $timeout( function() {
+            scope.timed_out = true;
+            scope.goHome = function() {
+              $location.path( "/" );
+              $window.location.reload();
+            }
+          }, 15000);
+        } else {
+          $timeout.cancel( scope.timeout );
+        }
+      });
+
       var opts = {
         lines: 13 // The number of lines to draw
       , length: 5 // The length of each line
@@ -35,10 +56,6 @@ angular.module('WynoApp').directive('showLoadingSpinner', ['$timeout', function(
       var spinner = new Spinner(opts).spin();
       var loadingContainer = element.find('.my-loading-spinner-container')[0];
       loadingContainer.appendChild(spinner.el);
-
-      $timeout(function() {
-        scope.timeout = true;
-      }, 8000)
     }
   };
 }]);

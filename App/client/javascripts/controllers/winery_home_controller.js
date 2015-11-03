@@ -5,7 +5,7 @@ angular.module( 'WynoApp' ).controller( 'WineryHomeController', [
 '$rootScope',
 '$meteor',
 function( $scope, $stateParams, $state, $rootScope, $meteor ) {
-	$rootScope.body_bg_color = "white";
+	$rootScope.setBackgroundColor( "white" );
 
 	$scope.$meteorSubscribe( 'wineries' ).then( function() {
 		$scope.current_winery = Wineries.findOne( $stateParams.winery_id );

@@ -1,6 +1,6 @@
 App.configurePlugin('com.phonegap.plugins.facebookconnect', {
   // APP_ID: '767742936685686', // prod
-  APP_ID: '767743096685670', // dev
+  APP_ID: '767742936685686', // dev
   APP_NAME: 'Wyno'
 });
 

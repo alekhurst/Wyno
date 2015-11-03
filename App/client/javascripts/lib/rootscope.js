@@ -5,16 +5,14 @@ angular.module( 'WynoApp' ).run( ['$rootScope', '$location', '$state', function(
     history.push( $location.$$path );
   });
 
-  $rootScope.user_logged_in = (function() {
-      if( Meteor.userId() )
-          return true;
-      return false;
-  })();
-
   $rootScope.goBack = function () {
     var prevUrl = history.length > 1 ? history.splice(-2)[0] : "/";
     $location.path( prevUrl );
   };
+
+  $rootScope.setBackgroundColor = function( color ) {
+    document.querySelector( 'body' ).style.backgroundColor = color;
+  }
 
   /**
    * used as hacky solution to show avg rating stars in
@@ -59,6 +57,12 @@ angular.module( 'WynoApp' ).run( ['$rootScope', '$location', '$state', function(
       }
     })
   }
+
+  $rootScope.user_logged_in = (function() {
+      if( Meteor.userId() )
+          return true;
+      return false;
+  })();
 
   /**
    * Gets the full sized image for displaying in the view

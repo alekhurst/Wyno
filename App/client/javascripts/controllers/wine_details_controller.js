@@ -6,7 +6,7 @@ angular.module( 'WynoApp' ).controller( 'WineDetailsController', [
 '$meteor',
 'TasteFactory',
 function( $scope, $state, $stateParams, $rootScope, $meteor, TasteFactory ) {
-	$rootScope.body_bg_color = "white";
+	$rootScope.setBackgroundColor( "white" );
 	$scope.current_tasting = TasteFactory;
 	$scope.current_user_review = undefined;
 	$scope.current_user_note = undefined;

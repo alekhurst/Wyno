@@ -5,7 +5,7 @@ angular.module( 'WynoApp' ).controller( 'SpecialsController', [
 '$rootScope',
 '$meteor',
 function( $scope, $stateParams, $location, $rootScope, $meteor ) {
-	$rootScope.body_bg_color = "#F4F4F4";
+	$rootScope.setBackgroundColor( "#F4F4F4" );
 	$scope.associated_wines = [];
 
     $scope.$meteorSubscribe( 'specials' ).then( function() {

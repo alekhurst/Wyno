@@ -48,7 +48,7 @@ function( $scope, $stateParams, $location, $rootScope, $meteor, TasteFactory ) {
 	 */
 	$scope.initialize = function() {
 		// white background for this page
-		$rootScope.body_bg_color = "white";
+		$rootScope.setBackgroundColor( "white" );
 		// set view loading to true;
 		$scope.view_loading = true;
 		// get current winery

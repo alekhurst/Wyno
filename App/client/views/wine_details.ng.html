@@ -53,8 +53,8 @@
 		<div class="module module-100" id="reviews-module">
 			<h6 ng-show="checkForUserReview() !== true">reviews</h6>
 			<h6 ng-show="checkForUserReview() === true">all reviews</h6>
-			<button ng-click="openEditReview()" ng-show="checkForUserReview() === false">submit a review</button>
-			<button class="login-button" ng-show="checkForUserReview() === 'not_logged_in'" ng-click="loginWithFacebook()"><img src="/images/fb_logo.png" /> <p>log in with facebook to review</p></button>
+			<button class="reviews-login-button" ng-click="openEditReview()" ng-show="checkForUserReview() === false">submit a review</button>
+			<button class="login-button reviews-login-button" ng-show="checkForUserReview() === 'not_logged_in'" ng-click="loginWithFacebook()"><img src="/images/fb_logo.png" /> <p>log in with facebook to review</p></button>
 			<div class="a-review" ng-repeat="review in reviews">
 				<div class="stars-and-name">
 					<img class="rating-star" src="/images/star-selected.svg" ng-repeat="i in getArrayFromNumber(review.stars) track by $index">

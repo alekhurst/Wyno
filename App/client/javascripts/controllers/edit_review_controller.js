@@ -5,7 +5,7 @@ angular.module( 'WynoApp' ).controller( 'EditReviewController', [
 '$rootScope',
 '$meteor',
 function( $scope, $stateParams, $state, $rootScope, $meteor ) {
-	$rootScope.body_bg_color = "#F4F4F4"; 
+	$rootScope.setBackgroundColor( "#F4F4F4" ); 
 	$scope.temp_review = undefined;
 	$scope.header_text = '';
 	$scope.editing_a_review = undefined;
